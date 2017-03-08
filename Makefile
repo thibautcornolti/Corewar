@@ -5,14 +5,17 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Wed Mar  8 14:11:57 2017 Thibaut Cornolti
+## Last update Wed Mar  8 18:32:01 2017 Thibaut Cornolti
 ##
 
 SRC	=	asm.c			\
+		endian.c		\
+		instruction.c		\
+		utils.c			\
 
 OBJS	=	$(SRCS:.c=.o)
 
-NAME	=	zasm
+NAME	=	asm
 
 CC	=	gcc -g
 

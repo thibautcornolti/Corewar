@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Wed Mar  8 14:45:05 2017 Thibaut Cornolti
+** Last update Wed Mar  8 17:54:40 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -36,16 +36,13 @@ void		put(char *str, int fd)
 
 int		main(int ac, char **av)
 {
-  int		fd;
+  /* int		fd; */
 
   (void)ac;(void)av;
-  fd = open("oui", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
-  
-  /* inst(1, 17891, 21, fd); */
-  /* inst(1, 59, 1, fd); */
-  /* inst(2, 21, 10, fd); */
-  /* put("Yolo!!!!!", fd); */
-  int oui = 3;
-  write_endian(1, &oui, 4);
+  /* fd = open("oui", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO); */
+  t_arg oui1 = {T_IND, 33};
+  t_arg oui2 = {T_REG, 3};
+  inst_live(1, 1);
+  inst_ld(&oui1, &oui2, 1);
   return (0);
 }
