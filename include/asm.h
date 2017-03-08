@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar  8 15:28:20 2017 Thibaut Cornolti
+** Last update Wed Mar  8 17:54:07 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -28,11 +28,21 @@
 # define T_IND			4
 # define T_LAB			8
 
+typedef struct	s_arg
+{
+  char		type;
+  int		arg;
+}		t_arg;
+
 typedef struct	s_bytecode
 {
   char		instruction;
   int		arg1;
   int		arg2;
 }		t_bytecode;
+
+void		write_endian(int, void *, int);
+void		inst_live(int, int);
+void		inst_ld(t_arg *, t_arg *, int);
 
 #endif /* !ASM_H_ */
