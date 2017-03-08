@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Wed Mar  8 19:12:53 2017 Luc
+** Last update Wed Mar  8 21:42:44 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -101,7 +101,10 @@ char		*file(char *path)
   if ((dest = malloc(sizeof(char) * my_strlen(path) + 5)) == NULL)
     return (NULL);
   while (path[i] != '\0' && path[i] != '.')
-    dest[i] = path[i++];
+    {
+      dest[i] = path[i];
+      i += 1;
+    }
   dest[i] = '\0';
   if (path[i] != '.')
     return (NULL);
@@ -118,6 +121,7 @@ int		make_header(t_champion *champ, char *path, int size)
   if ((champ->fd = open(pathcor, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU |
 			S_IRWXG | S_IRWXO)) == -1)
     return (84);
+  champ->fd = 1;
   if ((my_strncmp(champ->champion[0], NAME_STRING, 5)) == 1)
     return (84);
   magic = MAGIC;

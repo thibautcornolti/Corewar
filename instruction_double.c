@@ -5,8 +5,11 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:24:23 2017 Thibaut Cornolti
-** Last update Wed Mar  8 21:25:39 2017 Thibaut Cornolti
+** Last update Wed Mar  8 21:31:53 2017 Thibaut Cornolti
 */
+
+#include <unistd.h>
+#include "asm.h"
 
 void		inst_double(char inst, t_arg *first_arg,
 			    t_arg *second_arg, int fd)

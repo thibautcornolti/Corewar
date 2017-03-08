@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Wed Mar  8 21:23:28 2017 Thibaut Cornolti
+** Last update Wed Mar  8 21:40:43 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -36,10 +36,13 @@ void		put(char *str, int fd)
 
 int		main(int ac, char **av)
 {
-  /* int		fd; */
+  int		fd;
 
   (void)ac;(void)av;
-  /* fd = open("oui", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO); */
+  fd = open(av[1], O_RDONLY);
+  
+  if (start_header(av[1], fd) == 84)
+    return (84);
   inst_live(1, 1);
 
   t_arg oui1 = {T_IND, 33};
