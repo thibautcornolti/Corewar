@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Wed Mar  8 17:54:40 2017 Thibaut Cornolti
+** Last update Wed Mar  8 21:23:28 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -40,9 +40,19 @@ int		main(int ac, char **av)
 
   (void)ac;(void)av;
   /* fd = open("oui", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO); */
+  inst_live(1, 1);
+
   t_arg oui1 = {T_IND, 33};
   t_arg oui2 = {T_REG, 3};
-  inst_live(1, 1);
   inst_ld(&oui1, &oui2, 1);
+
+  t_arg oui3 = {T_REG, 1};
+  t_arg oui4 = {T_REG, 2};
+  inst_st(&oui3, &oui4, 1);
+
+  t_arg oui5 = {T_REG, 2};
+  t_arg oui6 = {T_IND, 56};
+  inst_st(&oui5, &oui6, 1);
+
   return (0);
 }
