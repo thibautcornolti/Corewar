@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Wed Mar  8 18:37:26 2017 Luc
+** Last update Wed Mar  8 19:12:53 2017 Luc
 */
 
 #include <unistd.h>
@@ -63,16 +63,49 @@ int		give_me_comment(char *comment, t_champion *champ)
   return (0);
 }
 
+char		*get_the_name_of_file(char *path, int i)
+{
+  int		count;
+  char		*dest;
+  int		j;
+
+  count = 0;
+  while (count != i)
+    {
+      if ((*path) == '/')
+	count += 1;
+      path += 1;
+    }
+  j = 0;
+  if ((dest = malloc(sizeof(char) * my_strlen(path) + 1)) == NULL)
+    return (NULL);
+  while (path[j] != '\0' && path[j] != '.')
+    {
+      dest[j] = path[j];
+      j++;
+    }
+  if (path[j] != '.')
+    return (NULL);
+  dest[j] = '\0';
+  return (my_strcat(dest,".cor"));
+}
+
 char		*file(char *path)
 {
   int		i;
-  int		j;
-  int		count;
   char		*dest;
 
+  i = 0;
+  if ((i = contains_char('/', path)) > 0)
+    return (get_the_name_of_file(path, i));
   if ((dest = malloc(sizeof(char) * my_strlen(path) + 5)) == NULL)
     return (NULL);
-  return (dest);
+  while (path[i] != '\0' && path[i] != '.')
+    dest[i] = path[i++];
+  dest[i] = '\0';
+  if (path[i] != '.')
+    return (NULL);
+  return (my_strcat(dest,".cor"));
 }
 
 int		make_header(t_champion *champ, char *path, int size)
@@ -80,8 +113,8 @@ int		make_header(t_champion *champ, char *path, int size)
   int		magic;
   char		*pathcor;
 
-  pathcor = file(path);
-  printf("%s\n", pathcor);
+  if ((pathcor = file(path)) == NULL)
+    return (84);
   if ((champ->fd = open(pathcor, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU |
 			S_IRWXG | S_IRWXO)) == -1)
     return (84);
