@@ -5,8 +5,10 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Tue Mar 22 16:44:20 2011 Astek
+** Last update Wed Mar  8 14:27:32 2017 Thibaut Cornolti
 */
+
+.Ne pas include mais recopier dans asm.h (norme)
 
 #ifndef _OP_H_
 # define _OP_H_
