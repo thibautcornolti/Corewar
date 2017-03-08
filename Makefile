@@ -5,14 +5,14 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Fri Mar  3 13:23:49 2017 Thibaut Cornolti
+## Last update Wed Mar  8 14:11:57 2017 Thibaut Cornolti
 ##
 
 SRC	=	asm.c			\
 
 OBJS	=	$(SRCS:.c=.o)
 
-NAME	=	asm
+NAME	=	zasm
 
 CC	=	gcc -g
 

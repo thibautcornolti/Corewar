@@ -1,3 +1,5 @@
 asm
 *.cor
 *.s
+oasm
+zasm
