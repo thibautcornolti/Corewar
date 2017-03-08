@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar  8 14:40:53 2017 Thibaut Cornolti
+** Last update Wed Mar  8 15:28:20 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -22,6 +22,11 @@
 # define NAME_STRING		".name"
 # define COMMENT_STRING		".comment"
 # define REG_NUMBER		16
+
+# define T_REG			1
+# define T_DIR			2
+# define T_IND			4
+# define T_LAB			8
 
 typedef struct	s_bytecode
 {

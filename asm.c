@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Wed Mar  8 14:40:00 2017 Thibaut Cornolti
+** Last update Wed Mar  8 14:45:05 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -14,16 +14,6 @@
 #include <unistd.h>
 #include "my.h"
 #include "asm.h"
-
-void		write_endian(int fd, void *ptr, int size)
-{
-  int		i;
-
-  i = -1;
-  (void)i;
-  //while (++i < size)
-  write(fd, ptr, size);
-}
 
 void		inst(int type, int arg1, int arg2, int fd)
 {
@@ -56,6 +46,6 @@ int		main(int ac, char **av)
   /* inst(2, 21, 10, fd); */
   /* put("Yolo!!!!!", fd); */
   int oui = 3;
-  write_endian(fd, &oui, 4);
+  write_endian(1, &oui, 4);
   return (0);
 }
