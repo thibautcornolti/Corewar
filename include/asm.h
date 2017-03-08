@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar  8 18:33:13 2017 Thibaut Cornolti
+** Last update Wed Mar  8 18:36:19 2017 Luc
 */
 
 #ifndef ASM_H_
@@ -37,6 +37,7 @@ typedef struct	s_arg
 typedef struct	s_champion
 {
   char		**champion;
+  int		fd;
 }		t_champion;
 
 typedef struct	s_bytecode
@@ -49,6 +50,6 @@ typedef struct	s_bytecode
 void		write_endian(int, void *, int);
 void		inst_live(int, int);
 void		inst_ld(t_arg *, t_arg *, int);
-int		make_header(t_champion *champ);
+int		make_header(t_champion *champ, char *path,int size);
 
 #endif /* !ASM_H_ */

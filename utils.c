@@ -5,8 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Wed Mar  8 18:31:47 2017 Thibaut Cornolti
+** Last update Wed Mar  8 18:36:51 2017 Luc
 */
+
+#include "asm.h"
 
 char		type_to_binary(char type)
 {
