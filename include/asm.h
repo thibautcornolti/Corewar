@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar  8 14:40:53 2017 Thibaut Cornolti
+** Last update Wed Mar  8 15:09:03 2017 Luc
 */
 
 #ifndef ASM_H_
@@ -29,5 +29,12 @@ typedef struct	s_bytecode
   int		arg1;
   int		arg2;
 }		t_bytecode;
+
+typedef struct	s_champion
+{
+  char		**champion;
+}		t_champion;
+
+int		make_header(t_champion *champ);
 
 #endif /* !ASM_H_ */
