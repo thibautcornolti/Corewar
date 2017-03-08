@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar  8 18:39:40 2017 Thibaut Cornolti
+** Last update Wed Mar  8 19:30:38 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -53,5 +53,6 @@ void		inst_ld(t_arg *, t_arg *, int);
 int		make_header(t_champion *, char *, int);
 int		contains_char(char, char *);
 char		type_to_binary(char);
+char		type_to_size(char);
 
 #endif /* !ASM_H_ */

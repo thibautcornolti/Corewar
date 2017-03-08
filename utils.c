@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Wed Mar  8 18:36:51 2017 Luc
+** Last update Wed Mar  8 19:30:11 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
@@ -18,7 +18,20 @@ char		type_to_binary(char type)
   i = -1;
   while (++i < 4)
     if (types[i] == type)
-      return (type + 1);
+      return (i + 1);
+  return (0);
+}
+
+char		type_to_size(char type)
+{
+  const char	types[4] = {T_REG, T_DIR, T_IND, T_LAB};
+  const char	size[4] = {1, 4, 2, 4};
+  int		i;
+
+  i = -1;
+  while (++i < 4)
+    if (types[i] == type)
+      return (size[i]);
   return (0);
 }
 
