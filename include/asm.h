@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar  8 14:26:29 2017 Thibaut Cornolti
+** Last update Wed Mar  8 14:40:53 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -18,7 +18,7 @@
 # define LABEL_CHAR		':'
 # define DIRECT_CHAR		'%'
 # define SEPARATOR_CHAR		','
-# define LABEL_CHAR		'abcdefghijklmnopqrstuvwxyz_0123456789'
+# define LABEL_CHARS		'abcdefghijklmnopqrstuvwxyz_0123456789'
 # define NAME_STRING		".name"
 # define COMMENT_STRING		".comment"
 # define REG_NUMBER		16

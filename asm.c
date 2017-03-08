@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Wed Mar  8 14:12:46 2017 Thibaut Cornolti
+** Last update Wed Mar  8 14:40:00 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -51,9 +51,11 @@ int		main(int ac, char **av)
   (void)ac;(void)av;
   fd = open("oui", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
   
-  inst(1, 17891, 21, fd);
-  inst(1, 59, 1, fd);
-  inst(2, 21, 10, fd);
-  put("Yolo!!!!!", fd);
+  /* inst(1, 17891, 21, fd); */
+  /* inst(1, 59, 1, fd); */
+  /* inst(2, 21, 10, fd); */
+  /* put("Yolo!!!!!", fd); */
+  int oui = 3;
+  write_endian(fd, &oui, 4);
   return (0);
 }
