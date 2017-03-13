@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar  8 21:31:43 2017 Thibaut Cornolti
+** Last update Mon Mar 13 19:37:49 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -52,7 +52,7 @@ void		write_endian(int, void *, int);
 void		inst_live(int, int);
 void		inst_ld(t_arg *, t_arg *, int);
 void		inst_st(t_arg *, t_arg *, int);
-void		inst_double(char, t_arg *, t_arg *, int);
+void		inst_gen(char, t_arg[], int, int);
 int		make_header(t_champion *, char *, int);
 int		contains_char(char, char *);
 char		type_to_binary(char);

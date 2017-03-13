@@ -5,13 +5,13 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Wed Mar  8 21:29:32 2017 Thibaut Cornolti
+## Last update Mon Mar 13 16:45:47 2017 Thibaut Cornolti
 ##
 
 SRC	=	asm.c			\
 		endian.c		\
 		instruction.c		\
-		instruction_double.c	\
+		instruction_gen.c	\
 		utils.c			\
 		header.c		\
 		parsing.c		\
