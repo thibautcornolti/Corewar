@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Mon Mar 20 16:17:07 2017 Thibaut Cornolti
+** Last update Mon Mar 20 16:29:49 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -63,5 +63,6 @@ char		type_to_size(char);
 char		*get_file(char *);
 int		pre_start_header(int, int);
 int		get_fd_cor(char *);
+char		*skip_comm(int);
 
 #endif /* !ASM_H_ */

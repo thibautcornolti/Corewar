@@ -5,10 +5,21 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Wed Mar  8 19:30:11 2017 Thibaut Cornolti
+** Last update Mon Mar 20 16:37:36 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
+#include "my.h"
+
+char		*skip_comm(int fd)
+{
+  char		*res;
+
+  while ((res = get_next_line(fd)))
+    if (res[0] != COMMENT_CHAR && res[0])
+      return (res);
+  return (res);
+}
 
 char		type_to_binary(char type)
 {

@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 14:19:52 2017 Luc
-** Last update Mon Mar 20 16:16:58 2017 Thibaut Cornolti
+** Last update Mon Mar 20 16:27:01 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -52,8 +52,8 @@ int		pre_start_header(int fd_s, int fd_cor)
 {
   char		*file[2];
 
-  file[0] = my_epure_str(get_next_line(fd_s));
-  file[1] = my_epure_str(get_next_line(fd_s));
+  file[0] = my_epure_str(skip_comm(fd_s));
+  file[1] = my_epure_str(skip_comm(fd_s));
   fd_cor = 1;
   if (start_header(fd_cor, file) == 84)
     return (84);
