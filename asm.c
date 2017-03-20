@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Wed Mar  8 21:40:43 2017 Thibaut Cornolti
+** Last update Mon Mar 20 14:01:27 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -15,23 +15,33 @@
 #include "my.h"
 #include "asm.h"
 
-void		inst(int type, int arg1, int arg2, int fd)
+static int	get_fd_cor(char *name)
 {
-  write_endian(fd, &type, 1);
-  write_endian(fd, &arg1, 4);
-  write_endian(fd, &arg2, 4);
+  char		*pathcor;
+  int		fd_cor;
+
+  if ((pathcor = get_file(name)) == NULL)
+    return (-1);
+  if ((fd_cor = open(pathcor, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU |
+		     S_IRWXG | S_IRWXO)) <= 0)
+    return (-1);
+  return (fd_cor);
 }
 
-void		put(char *str, int fd)
+static int	start_asm(char *name, int fd_s)
 {
-  int		len;
-  char		type;
+  char		*file[2];
+  int		fd_cor;
 
-  len = my_strlen(str);
-  type = 4;
-  write_endian(fd, &type, 1);
-  write_endian(fd, &len, 4);
-  write_endian(fd, str, len);
+  if ((fd_cor = get_fd_cor(name)) <= 0)
+    return (84);
+  file[0] = get_next_line(fd_s);
+  file[1] = get_next_line(fd_s);
+  fd_cor = 1;
+  if (start_header(fd_cor, file) == 84)
+    return (84);
+  close(fd_cor);
+  return (0);
 }
 
 int		main(int ac, char **av)
@@ -40,8 +50,7 @@ int		main(int ac, char **av)
 
   (void)ac;(void)av;
   fd = open(av[1], O_RDONLY);
-  
-  if (start_header(av[1], fd) == 84)
+  if (start_asm(av[1], fd) == 84)
     return (84);
   inst_live(1, 1);
 

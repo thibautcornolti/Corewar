@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Mon Mar 20 12:59:29 2017 Thibaut Cornolti
+** Last update Mon Mar 20 14:00:41 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -42,12 +42,6 @@ typedef struct	s_header
   char		comment[COMMENT_LENGTH + 1];
 }		t_header;
 
-typedef struct	s_champion
-{
-  char		**champion;
-  int		fd;
-}		t_champion;
-
 typedef struct	s_bytecode
 {
   char		instruction;
@@ -55,15 +49,17 @@ typedef struct	s_bytecode
   int		arg2;
 }		t_bytecode;
 
-int		start_header(char *, int);
+int		start_header(int, char **);
 void		write_endian(int, void *, int);
 void		inst_live(int, int);
 void		inst_ld(t_arg *, t_arg *, int);
 void		inst_st(t_arg *, t_arg *, int);
 void		inst_gen(char, t_arg[], int, int);
-int		make_header(t_champion *, char *, t_header *);
+int		make_header(char **, t_header *);
 int		contains_char(char, char *);
+int		take_info(char *);
 char		type_to_binary(char);
 char		type_to_size(char);
+char		*get_file(char *);
 
 #endif /* !ASM_H_ */

@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Mon Mar 20 12:59:20 2017 Thibaut Cornolti
+** Last update Mon Mar 20 13:57:31 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -81,7 +81,7 @@ char		*get_the_name_of_file(char *path, int i)
   return (my_strcat(dest,".cor"));
 }
 
-char		*file(char *path)
+char		*get_file(char *path)
 {
   int		i;
   char		*dest;
@@ -102,24 +102,16 @@ char		*file(char *path)
   return (my_strcat(dest,".cor"));
 }
 
-int		make_header(t_champion *champ, char *path, t_header *header)
+int		make_header(char *file[2], t_header *header)
 {
-  char		*pathcor;
-
-  if ((pathcor = file(path)) == NULL)
-    return (84);
-  if ((champ->fd = open(pathcor, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU |
-			S_IRWXG | S_IRWXO)) == -1)
-    return (84);
-  champ->fd = 1;
-  if ((my_strncmp(champ->champion[0], NAME_STRING, 5)) == 1)
+  if ((my_strncmp(file[0], NAME_STRING, 5)) == 1)
     return (84);
   header->magic = MAGIC;
-  if ((give_me_the_name(champ->champion[0], header)) == 84)
+  if ((give_me_the_name(file[0], header)) == 84)
     return (84);
-  if ((my_strncmp(champ->champion[1], COMMENT_STRING, 8)) == 1)
+  if ((my_strncmp(file[1], COMMENT_STRING, 8)) == 1)
     return (84);
-  if ((give_me_comment(champ->champion[1], header)) == 84)
+  if ((give_me_comment(file[1], header)) == 84)
     return (84);
   return (0);
 }
