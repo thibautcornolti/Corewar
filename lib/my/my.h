@@ -5,12 +5,13 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Oct 13 09:49:36 2016 Thibaut Cornolti
-** Last update Wed Feb  8 15:10:36 2017 Thibaut Cornolti
+** Last update Mon Mar 20 13:20:04 2017 Luc
 */
 #ifndef MY_H_
 # define MY_H_
 
 void	my_putchar(char);
+char	*my_epure_str(char *);
 int	my_puterror(char *);
 int	my_isneg(int);
 int	my_put_nbr(int);

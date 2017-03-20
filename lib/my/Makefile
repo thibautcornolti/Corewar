@@ -5,13 +5,14 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Fri Oct 14 09:19:13 2016 Thibaut Cornolti
-## Last update Tue Feb 14 00:18:56 2017 Thibaut Cornolti
+## Last update Mon Mar 20 13:19:33 2017 Luc
 ##
 
 SRC	=	my_putchar.c		\
 		my_puterror.c		\
 		convert_base.c		\
 		my_fact_rec.c		\
+		my_epure_str.c		\
 		my_find_prime_sup.c	\
 		my_getnbr_base.c	\
 		my_getnbr.c		\
