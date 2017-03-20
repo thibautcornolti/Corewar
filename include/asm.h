@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Mon Mar 13 19:37:49 2017 Thibaut Cornolti
+** Last update Mon Mar 20 12:59:29 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -34,6 +34,14 @@ typedef struct	s_arg
   int		arg;
 }		t_arg;
 
+typedef struct	s_header
+{
+  int		magic;
+  char		prog_name[NAME_LENGTH + 1];
+  int		prog_size;
+  char		comment[COMMENT_LENGTH + 1];
+}		t_header;
+
 typedef struct	s_champion
 {
   char		**champion;
@@ -53,7 +61,7 @@ void		inst_live(int, int);
 void		inst_ld(t_arg *, t_arg *, int);
 void		inst_st(t_arg *, t_arg *, int);
 void		inst_gen(char, t_arg[], int, int);
-int		make_header(t_champion *, char *, int);
+int		make_header(t_champion *, char *, t_header *);
 int		contains_char(char, char *);
 char		type_to_binary(char);
 char		type_to_size(char);

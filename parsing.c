@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Wed Mar  8 21:42:44 2017 Thibaut Cornolti
+** Last update Mon Mar 20 12:59:20 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -16,11 +16,10 @@
 #include "my.h"
 #include "asm.h"
 
-int		give_me_the_name(char *name, t_champion *champ)
+int		give_me_the_name(char *name, t_header *header)
 {
   int		i;
   int		j;
-  char		dest[NAME_LENGTH];
 
   i = 5;
   while (name[i] != '"' && name[i] != '\0')
@@ -29,22 +28,17 @@ int		give_me_the_name(char *name, t_champion *champ)
     return (84);
   i++;
   j = 0;
-  while (j <= NAME_LENGTH)
-    dest[j++] = '\0';
-  j = 0;
-  while (name[i] != '"' && name[i] != '\0')
-    dest[j++] = name[i++];
+  while (name[i] != '"' && name[i] != '\0' && i <= NAME_LENGTH)
+    header->prog_name[j++] = name[i++];
   if (name[i] != '"')
     return (84);
-  write(champ->fd, dest, NAME_LENGTH + 4);
   return (0);
 }
 
-int		give_me_comment(char *comment, t_champion *champ)
+int		give_me_comment(char *comment, t_header *header)
 {
   int		i;
   int		j;
-  char		dest[2048];
 
   i = 8;
   while (comment[i] != '"' && comment[i] != '\0')
@@ -53,13 +47,10 @@ int		give_me_comment(char *comment, t_champion *champ)
     return (84);
   i++;
   j = 0;
-  while (comment[i] != '"' && comment[i] != '\0')
-    dest[j++] = comment[i++];
+  while (comment[i] != '"' && comment[i] != '\0' && i <= NAME_LENGTH)
+    header->comment[j++] = comment[i++];
   if (comment[i] != '"')
     return (84);
-  while (j <= 2048)
-    dest[j++] = '\0';
-  write(champ->fd, dest, 2048);
   return (0);
 }
 
@@ -111,9 +102,8 @@ char		*file(char *path)
   return (my_strcat(dest,".cor"));
 }
 
-int		make_header(t_champion *champ, char *path, int size)
+int		make_header(t_champion *champ, char *path, t_header *header)
 {
-  int		magic;
   char		*pathcor;
 
   if ((pathcor = file(path)) == NULL)
@@ -124,14 +114,12 @@ int		make_header(t_champion *champ, char *path, int size)
   champ->fd = 1;
   if ((my_strncmp(champ->champion[0], NAME_STRING, 5)) == 1)
     return (84);
-  magic = MAGIC;
-  write_endian(champ->fd, &magic, 4);
-  if ((give_me_the_name(champ->champion[0], champ)) == 84)
+  header->magic = MAGIC;
+  if ((give_me_the_name(champ->champion[0], header)) == 84)
     return (84);
   if ((my_strncmp(champ->champion[1], COMMENT_STRING, 8)) == 1)
     return (84);
-  write_endian(champ->fd, &size, sizeof(int));
-  if ((give_me_comment(champ->champion[1], champ)) == 84)
+  if ((give_me_comment(champ->champion[1], header)) == 84)
     return (84);
   return (0);
 }

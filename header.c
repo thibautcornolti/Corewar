@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 14:19:52 2017 Luc
-** Last update Wed Mar  8 21:33:41 2017 Thibaut Cornolti
+** Last update Mon Mar 20 13:08:25 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -32,11 +32,21 @@ int		take_info(char *path, int *line)
   return (0);
 }
 
+void		write_header(int fd, t_header *header)
+{
+  write_endian(fd, &(header->magic), sizeof(int));
+  write(fd, header->prog_name, NAME_LENGTH + 1);
+  write_endian(fd, &(header->prog_size), sizeof(int));
+  write(fd, header->comment, COMMENT_LENGTH + 1);
+}
+
 int		start_header(char *champion, int fd)
 {
   t_champion	chp;
   int		line;
+  t_header	header;
 
+  my_memset(&header, 0, sizeof(t_header));
   line = 0;
   take_info(champion, &line);
   if ((chp.champion = malloc(sizeof(char *) * (line + 1))) == NULL)
@@ -44,7 +54,8 @@ int		start_header(char *champion, int fd)
   line = 0;
   while ((chp.champion[line] = get_next_line(fd)) != NULL)
     line++;
-  if ((make_header(&chp, champion, 0)) == 84)
+  if ((make_header(&chp, champion, &header)) == 84)
     return (84);
+  write_header(chp.fd, &header);
   return (0);
 }
