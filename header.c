@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 14:19:52 2017 Luc
-** Last update Mon Mar 20 13:57:46 2017 Thibaut Cornolti
+** Last update Mon Mar 20 16:16:58 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -32,5 +32,31 @@ int		start_header(int fd_cor, char *file[2])
   if ((make_header(file, &header)) == 84)
     return (84);
   write_header(fd_cor, &header);
+  return (0);
+}
+
+int		get_fd_cor(char *name)
+{
+  char		*pathcor;
+  int		fd_cor;
+
+  if ((pathcor = get_file(name)) == NULL)
+    return (-1);
+  if ((fd_cor = open(pathcor, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU |
+		     S_IRWXG | S_IRWXO)) <= 0)
+    return (-1);
+  return (fd_cor);
+}
+
+int		pre_start_header(int fd_s, int fd_cor)
+{
+  char		*file[2];
+
+  file[0] = my_epure_str(get_next_line(fd_s));
+  file[1] = my_epure_str(get_next_line(fd_s));
+  fd_cor = 1;
+  if (start_header(fd_cor, file) == 84)
+    return (84);
+  close(fd_cor);
   return (0);
 }

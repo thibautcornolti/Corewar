@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Mon Mar 20 14:02:24 2017 Thibaut Cornolti
+** Last update Mon Mar 20 16:17:21 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -15,32 +15,14 @@
 #include "my.h"
 #include "asm.h"
 
-static int	get_fd_cor(char *name)
+int		start_asm(char *name, int fd_s)
 {
-  char		*pathcor;
-  int		fd_cor;
-
-  if ((pathcor = get_file(name)) == NULL)
-    return (-1);
-  if ((fd_cor = open(pathcor, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU |
-		     S_IRWXG | S_IRWXO)) <= 0)
-    return (-1);
-  return (fd_cor);
-}
-
-static int	start_asm(char *name, int fd_s)
-{
-  char		*file[2];
   int		fd_cor;
 
   if ((fd_cor = get_fd_cor(name)) <= 0)
     return (84);
-  file[0] = my_epure_str(get_next_line(fd_s));
-  file[1] = my_epure_str(get_next_line(fd_s));
-  fd_cor = 1;
-  if (start_header(fd_cor, file) == 84)
+  if (pre_start_header(fd_s, fd_cor) == 84)
     return (84);
-  close(fd_cor);
   return (0);
 }
 
