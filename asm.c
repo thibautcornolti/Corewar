@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Mon Mar 20 14:01:27 2017 Thibaut Cornolti
+** Last update Mon Mar 20 14:02:24 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -35,8 +35,8 @@ static int	start_asm(char *name, int fd_s)
 
   if ((fd_cor = get_fd_cor(name)) <= 0)
     return (84);
-  file[0] = get_next_line(fd_s);
-  file[1] = get_next_line(fd_s);
+  file[0] = my_epure_str(get_next_line(fd_s));
+  file[1] = my_epure_str(get_next_line(fd_s));
   fd_cor = 1;
   if (start_header(fd_cor, file) == 84)
     return (84);
