@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Oct 13 09:49:36 2016 Thibaut Cornolti
-** Last update Mon Mar 20 13:20:04 2017 Luc
+** Last update Tue Mar 21 10:15:34 2017 Thibaut Cornolti
 */
 #ifndef MY_H_
 # define MY_H_
@@ -58,7 +58,7 @@ char	*my_int_to_str(int, char *);
 int	my_str_contains(char, char *);
 int	my_char_isfactor(char);
 char	*get_next_line(const int);
-char	**my_strsplit(char *, char);
+char	**my_strsplit(char *, char *);
 char	*my_strmcat(char *, char *);
 
 #endif /* !MY_H_ */
