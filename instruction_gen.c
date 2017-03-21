@@ -5,13 +5,13 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:24:23 2017 Thibaut Cornolti
-** Last update Mon Mar 13 19:38:05 2017 Thibaut Cornolti
+** Last update Tue Mar 21 11:49:19 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
 #include "asm.h"
 
-void		inst_gen(char inst, t_arg args[4], int len, int fd)
+int		inst_gen(char inst, t_arg args[4], int len, int fd)
 {
   char		type;
 
@@ -31,4 +31,5 @@ void		inst_gen(char inst, t_arg args[4], int len, int fd)
     write_endian(fd, &(args[2].arg), type_to_size(args[2].type));
   if (len >= 4)
     write_endian(fd, &(args[3].arg), type_to_size(args[3].type));
+  return (0);
 }

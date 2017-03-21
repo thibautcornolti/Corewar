@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 14:19:52 2017 Luc
-** Last update Mon Mar 20 16:27:01 2017 Thibaut Cornolti
+** Last update Tue Mar 21 14:04:30 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -20,8 +20,10 @@ void		write_header(int fd, t_header *header)
 {
   write_endian(fd, &(header->magic), sizeof(int));
   write(fd, header->prog_name, NAME_LENGTH + 1);
+  write(fd, "\0\0\0", 3);
   write_endian(fd, &(header->prog_size), sizeof(int));
   write(fd, header->comment, COMMENT_LENGTH + 1);
+  write(fd, "\0\0\0", 3);
 }
 
 int		start_header(int fd_cor, char *file[2])
@@ -57,6 +59,7 @@ int		pre_start_header(int fd_s, int fd_cor)
   fd_cor = 1;
   if (start_header(fd_cor, file) == 84)
     return (84);
-  close(fd_cor);
+  if (fd_cor >= 2)
+    close(fd_cor);
   return (0);
 }

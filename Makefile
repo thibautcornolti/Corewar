@@ -5,12 +5,15 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Mon Mar 13 16:45:47 2017 Thibaut Cornolti
+## Last update Tue Mar 21 11:13:19 2017 Thibaut Cornolti
 ##
 
 SRC	=	asm.c			\
 		endian.c		\
-		instruction.c		\
+		instruction_first.c	\
+		instruction_mid.c	\
+		instruction_mid_next.c	\
+		instruction_last.c	\
 		instruction_gen.c	\
 		utils.c			\
 		header.c		\

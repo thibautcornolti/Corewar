@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Mon Mar 20 16:37:36 2017 Thibaut Cornolti
+** Last update Tue Mar 21 10:50:32 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
@@ -23,7 +23,7 @@ char		*skip_comm(int fd)
 
 char		type_to_binary(char type)
 {
-  const char	types[4] = {T_REG, T_DIR, T_IND, T_LAB};
+  const char	types[4] = {T_REG, T_DIR, T_IND};
   int		i;
 
   i = -1;
@@ -35,8 +35,8 @@ char		type_to_binary(char type)
 
 char		type_to_size(char type)
 {
-  const char	types[4] = {T_REG, T_DIR, T_IND, T_LAB};
-  const char	size[4] = {1, 4, 2, 4};
+  const char	types[4] = {T_REG, T_DIR, T_IND};
+  const char	size[4] = {1, 4, 2};
   int		i;
 
   i = -1;
