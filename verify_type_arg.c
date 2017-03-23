@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Thu Mar 23 22:22:27 2017 Luc
+** Last update Thu Mar 23 22:47:03 2017 Romain LANCIA
 */
 
 #include <stdio.h>
@@ -68,25 +68,19 @@ int	is_it_a_indirect_arg(char *arg, int *nb)
 int     verify_type_arg(char *str, int *i)
 {
   int	nb;
+  int	ret;
   
   *i = 0;
+  ret = 0;
   if (is_it_a_direct_arg(str, &nb) == 1)
-    {
-      *i = nb;
-      return (1);
-    }
+    ret = T_DIR;
   else if (is_it_a_register_arg(str, &nb) == 1)
-    {
-      *i = nb;
-      return (2);
-    }
+    ret = T_REG;
   else if (is_it_a_indirect_arg(str, &nb) == 1)
-    {
-      *i = nb;
-      return (3);
-    }
+    ret = T_IND;
   else
     return (84);
-  return (0);
+  *i = nb;
+  return (ret);
 }
 

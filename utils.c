@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Tue Mar 21 10:50:32 2017 Thibaut Cornolti
+** Last update Thu Mar 23 23:57:05 2017 Romain LANCIA
 */
 
 #include "asm.h"
@@ -44,6 +44,13 @@ char		type_to_size(char type)
     if (types[i] == type)
       return (size[i]);
   return (0);
+}
+
+int		nbr_arg(char inst)
+{
+  const char	args[16] = {1, 2, 2, 3, 3, 3, 3, 3,
+			    1, 3, 3, 1, 2, 3, 1, 1};
+  return (args[(int) inst]);
 }
 
 int		contains_char(char c, char *str)

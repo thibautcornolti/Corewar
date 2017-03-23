@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Thu Mar 23 22:35:15 2017 Luc
+** Last update Fri Mar 24 00:01:44 2017 Romain LANCIA
 */
 
 #include <stdio.h>
@@ -13,30 +13,78 @@
 #include "my.h"
 #include "asm.h"
 
-int	get_info_line(char *line, int fd)
+static void	my_memncpy(void *dest, void *src, int n)
 {
-  int	i;
-  int	j;
-  int	t;
-  char	**tab;
-  t_arg arg[3];
-  
-  tab = my_strsplit(line, " ,");
+  char		*dests;
+  char		*srcs;
+  int		i;
+
+  dests = dest;
+  srcs = src;
+  i = -1;
+  while (++i < n)
+    dests[i] = srcs[i];
+}
+
+static void	my_put_in_list(t_data **list, char inst, t_arg arg[3])
+{
+  t_data	*elem;
+  t_data	*tmp;
+
+  if ((elem = malloc(sizeof(t_data))) == NULL)
+    return ;
+  tmp = *list;
+  while (tmp && tmp->next)
+    tmp = tmp->next;
+  elem->next = NULL;
+  elem->inst = inst;
+  my_memncpy(elem->arg, arg, sizeof(t_arg) * 3);
+  if (tmp)
+    tmp->next = elem;
+  else
+    *list = elem;
+}
+
+static char	get_inst(char *s)
+{
+  const char	*insts[16] = {"live", "ld", "st", "add",
+			     "sub", "and", "or", "xor",
+			     "zjmp", "ldi", "sti", "fork",
+			     "lld", "lldi", "lfork", "aff"};
+  int		i;
+
+  i = -1;
+  while (++i < 16)
+    if (!my_strcmp(s, (char *) insts[i]))
+      return (i + 1);
+  return (0);
+}
+
+int		get_info_line(char *line, t_data **list)
+{
+  int		i;
+  int		t;
+  char		**tab;
+  t_arg		arg[3];
+
+  my_memset(arg, 0, sizeof(t_arg) * 3);
+  tab = my_strsplit(line, " ,\t");
   i = 1;
   while (tab[i] != NULL)
     {
-      j = verify_type_arg(tab[i], &t);
-      printf("%d\n", j);
-      if (j == 1)
-	arg[i - 1].type = T_DIR + '0';
-      if (j == 2)
-	arg[i - 1].type = T_REG + '0';
-      if (j == 3)
-	arg[i - 1].type = T_IND + '0';
+      arg[i - 1].type = verify_type_arg(tab[i], &t);
       arg[i - 1].arg = t;
       i++;
     }
-  printf("\ntype = %c | arg = %d\n", arg[0].type, arg[0].arg);
-  printf("type2 = %c | arg1 = %d\n", arg[1].type, arg[1].arg);
+  my_put_in_list(list, get_inst(tab[0]), arg);
+  /* t_data *oui = *list; */
+  /* while (oui) */
+  /*   { */
+  /*     printf("inst = %d\n", oui->inst); */
+  /*     printf("type = %d | arg = %d\n", oui->arg[0].type, oui->arg[0].arg); */
+  /*     printf("type2 = %d | arg1 = %d\n\n", oui->arg[1].type, oui->arg[1].arg); */
+  /*     oui = oui->next; */
+  /*   } */
+  /* printf("------------\n"); */
   return (0);
 }

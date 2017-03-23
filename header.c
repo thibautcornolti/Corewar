@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 14:19:52 2017 Luc
-** Last update Tue Mar 21 14:04:30 2017 Thibaut Cornolti
+** Last update Thu Mar 23 23:27:40 2017 Romain LANCIA
 */
 
 #include <sys/types.h>
@@ -26,14 +26,11 @@ void		write_header(int fd, t_header *header)
   write(fd, "\0\0\0", 3);
 }
 
-int		start_header(int fd_cor, char *file[2])
+static int	start_header(char *file[2], t_header *header)
 {
-  t_header	header;
-
-  my_memset(&header, 0, sizeof(t_header));
-  if ((make_header(file, &header)) == 84)
+  my_memset(header, 0, sizeof(t_header));
+  if ((make_header(file, header)) == 84)
     return (84);
-  write_header(fd_cor, &header);
   return (0);
 }
 
@@ -50,16 +47,13 @@ int		get_fd_cor(char *name)
   return (fd_cor);
 }
 
-int		pre_start_header(int fd_s, int fd_cor)
+int		pre_start_header(int fd_s, t_header *header)
 {
   char		*file[2];
 
   file[0] = my_epure_str(skip_comm(fd_s));
   file[1] = my_epure_str(skip_comm(fd_s));
-  fd_cor = 1;
-  if (start_header(fd_cor, file) == 84)
+  if (start_header(file, header) == 84)
     return (84);
-  if (fd_cor >= 2)
-    close(fd_cor);
   return (0);
 }

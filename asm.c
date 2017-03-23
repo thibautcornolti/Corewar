@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Thu Mar 23 22:17:30 2017 Luc
+** Last update Thu Mar 23 23:56:17 2017 Romain LANCIA
 */
 
 #include <sys/types.h>
@@ -19,14 +19,20 @@
 int		start_asm(char *name, int fd_s)
 {
   int		fd_cor;
+  t_header	header;
   char		*line;
+  t_data	*list;
 
+  list = NULL;
   if ((fd_cor = get_fd_cor(name)) <= 0)
     return (84);
-  if (pre_start_header(fd_s, fd_cor) == 84)
+  if (pre_start_header(fd_s, &header) == 84)
     return (84);
   while ((line = skip_comm(fd_s)))
-    get_info_line(my_epure_str(line), fd_cor);
+    get_info_line(my_epure_str(line), &list);
+  header.prog_size = get_prog_size(list);
+  write_header(1/* fd_cor */, &header);
+  close(fd_cor);
   return (0);
 }
 

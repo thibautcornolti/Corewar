@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Tue Mar 21 14:10:45 2017 Thibaut Cornolti
+** Last update Thu Mar 23 23:57:32 2017 Romain LANCIA
 */
 
 #ifndef ASM_H_
@@ -41,7 +41,13 @@ typedef struct	s_header
   char		comment[COMMENT_LENGTH + 1];
 }		t_header;
 
-int		start_header(int, char **);
+typedef struct	s_data
+{
+  char		inst;
+  t_arg		arg[3];
+  struct s_data	*next;
+}		t_data;
+
 void		write_endian(int, void *, int);
 int		make_header(char **, t_header *);
 int		contains_char(char, char *);
@@ -49,9 +55,14 @@ int		take_info(char *);
 char		type_to_binary(char);
 char		type_to_size(char);
 char		*get_file(char *);
-int		pre_start_header(int, int);
+int		pre_start_header(int, t_header *);
 int		get_fd_cor(char *);
 char		*skip_comm(int);
 int		inst_gen(char, t_arg[], int, int);
+int		get_info_line(char *, t_data **);
+int		verify_type_arg(char *, int *);
+int		get_prog_size(t_data *);
+void		write_header(int, t_header *);
+int		nbr_arg(char);
 
 #endif /* !ASM_H_ */
