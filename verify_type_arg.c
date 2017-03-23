@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Tue Mar 21 12:50:42 2017 Romain LANCIA
+** Last update Thu Mar 23 22:22:27 2017 Luc
 */
 
 #include <stdio.h>
@@ -75,16 +75,18 @@ int     verify_type_arg(char *str, int *i)
       *i = nb;
       return (1);
     }
-  if (is_it_a_register_arg(str, &nb) == 1)
+  else if (is_it_a_register_arg(str, &nb) == 1)
     {
       *i = nb;
       return (2);
     }
-  if (is_it_a_indirect_arg(str, &nb) == 1)
+  else if (is_it_a_indirect_arg(str, &nb) == 1)
     {
       *i = nb;
       return (3);
     }
+  else
+    return (84);
   return (0);
 }
 

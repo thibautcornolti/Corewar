@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Tue Mar 21 11:46:51 2017 Thibaut Cornolti
+** Last update Thu Mar 23 22:29:02 2017 Luc
 */
 
 #include <unistd.h>
@@ -68,16 +68,16 @@ char		*get_the_name_of_file(char *path, int i)
       path += 1;
     }
   j = 0;
-  if ((dest = malloc(sizeof(char) * my_strlen(path) + 1)) == NULL)
+  if ((dest = malloc(sizeof(char) * my_strlen(path) + 10)) == NULL)
     return (NULL);
   while (path[j] != '\0' && path[j] != '.')
     {
       dest[j] = path[j];
       j++;
     }
+  dest[j] = '\0';
   if (path[j] != '.')
     return (NULL);
-  dest[j] = '\0';
   return (my_strcat(dest,".cor"));
 }
 

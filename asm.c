@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Tue Mar 21 13:46:54 2017 Thibaut Cornolti
+** Last update Thu Mar 23 22:17:30 2017 Luc
 */
 
 #include <sys/types.h>
@@ -25,8 +25,8 @@ int		start_asm(char *name, int fd_s)
     return (84);
   if (pre_start_header(fd_s, fd_cor) == 84)
     return (84);
-  /* while ((line = skip_comm(fd_s))) */
-  /*   nique_ta_race(my_epure_str(line), fd_cor); */
+  while ((line = skip_comm(fd_s)))
+    get_info_line(my_epure_str(line), fd_cor);
   return (0);
 }
 
