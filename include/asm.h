@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Sun Mar 26 17:03:33 2017 Thibaut Cornolti
+** Last update Sun Mar 26 17:42:21 2017 Luc
 */
 
 #ifndef ASM_H_
@@ -18,7 +18,7 @@
 # define LABEL_CHAR		':'
 # define DIRECT_CHAR		'%'
 # define SEPARATOR_CHAR		','
-# define LABEL_CHARS		'abcdefghijklmnopqrstuvwxyz_0123456789'
+# define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 # define NAME_STRING		".name"
 # define COMMENT_STRING		".comment"
 # define REG_NUMBER		16
@@ -55,6 +55,7 @@ typedef struct		s_label
   struct s_label	*next;
 }			t_label;
 
+int		check_good_label(char *);
 char		get_inst(char *);
 void		write_endian(int, void *, int);
 int		make_header(char **, t_header *);

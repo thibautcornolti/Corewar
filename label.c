@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 16:59:47 2017 Thibaut Cornolti
+** Last update Sun Mar 26 17:42:04 2017 Luc
 */
 
 #include "my.h"
@@ -41,5 +41,21 @@ int		label(char *fname, t_label **label)
     return (84);
   new->lname = fname;
   temp->next = (new == temp) ? NULL : new;
+  return (0);
+}
+
+int	check_good_label(char *label)
+{
+  int	i;
+
+  i = 0;
+  while(label[i] != '\0')
+    {
+      if (!((label[i] >= 'a' && label[i] <= 'z') ||
+	    (label[i] >= '1' && label[i] <= '9') ||
+	    label[i] == '_'))
+	return (1);
+      i++;
+    }
   return (0);
 }
