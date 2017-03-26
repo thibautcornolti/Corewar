@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Sun Mar 26 17:03:08 2017 Thibaut Cornolti
+** Last update Sun Mar 26 17:35:52 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -60,6 +60,18 @@ char	get_inst(char *s)
   return (0);
 }
 
+static int	check_label(char *lname, t_label **babybel)
+{
+  if ((get_inst(lname)) == 0)
+    {
+      if ((label(my_strdup(lname), babybel)) == 84)
+	exit(0 + my_puterror("Multiple definition of the same label."));
+      else
+	return (1);
+    }
+  return (0);
+}
+
 int		get_info_line(char *line, t_data **list, t_label **babybel)
 {
   int		i;
@@ -70,9 +82,7 @@ int		get_info_line(char *line, t_data **list, t_label **babybel)
   my_memset(arg, 0, sizeof(t_arg) * 3);
   tab = my_strsplit(line, " ,\t");
   i = 1;
-  if ((get_inst(tab[0])) == 0)
-    if ((label(my_strdup(tab[0]), babybel)) == 84)
-      return (84);
+  tab += check_label(tab[0], babybel);
   while (tab[i] != NULL)
     {
       arg[i - 1].type = verify_type_arg(tab[i], &t, *babybel);
@@ -80,14 +90,14 @@ int		get_info_line(char *line, t_data **list, t_label **babybel)
       i++;
     }
   my_put_in_list(list, get_inst(tab[0]), arg);
-  /* t_data *oui = *list; */
-  /* while (oui) */
-  /*   { */
-  /*     printf("inst = %d\n", oui->inst); */
-  /*     printf("type = %d | arg = %d\n", oui->arg[0].type, oui->arg[0].arg); */
-  /*     printf("type2 = %d | arg1 = %d\n\n", oui->arg[1].type, oui->arg[1].arg); */
-  /*     oui = oui->next; */
-  /*   } */
-  /* printf("------------\n"); */
+  t_data *oui = *list;
+  while (oui)
+    {
+      printf("inst = %d\n", oui->inst);
+      printf("type = %d | arg = %d\n", oui->arg[0].type, oui->arg[0].arg);
+      printf("type2 = %d | arg1 = %d\n\n", oui->arg[1].type, oui->arg[1].arg);
+      oui = oui->next;
+    }
+  printf("------------\n");
   return (0);
 }
