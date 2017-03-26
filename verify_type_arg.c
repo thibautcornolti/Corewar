@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Sun Mar 26 17:23:56 2017 Luc
+** Last update Sun Mar 26 17:25:36 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -53,8 +53,10 @@ int	is_it_a_label_arg(char *arg, int *nb, t_label *babybel)
 int     is_it_a_register_arg(char *arg, int *nb)
 {
   int   i;
+  int	nega;
   
   i = 0 + 0 * (*nb = 0);
+  nega = 1;
   if (arg[0] != 'r')
     return (0);
   else
@@ -79,8 +81,10 @@ int     is_it_a_register_arg(char *arg, int *nb)
 int	is_it_a_indirect_arg(char *arg, int *nb)
 {
   int   i;
-  
+  int	nega;
+
   i = 0 + 0 * (*nb = 0);
+  nega = 1;
   if (arg[0] == '-')
     {
       arg += 1;
