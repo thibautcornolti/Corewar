@@ -5,11 +5,18 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:24:23 2017 Thibaut Cornolti
-** Last update Tue Mar 21 11:49:19 2017 Thibaut Cornolti
+** Last update Sun Mar 26 19:02:42 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
 #include "asm.h"
+
+int		inst_spec(char inst, t_arg args[4], int fd)
+{
+  write (fd, &inst, 1);
+  write_endian(fd, &(args[0].arg), 4);
+  return (0);
+}
 
 int		inst_gen(char inst, t_arg args[4], int len, int fd)
 {

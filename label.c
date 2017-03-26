@@ -5,12 +5,12 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 18:17:03 2017 Thibaut Cornolti
+** Last update Sun Mar 26 18:36:47 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include "my.h"
 #include "asm.h"
-#include <stdlib.h>
 
 int	get_label_pos(char *name, t_label *label)
 {
@@ -44,7 +44,7 @@ int		label(char *fname, t_label **label)
   return (0);
 }
 
-int	check_good_label(char *label)
+int		check_good_label(char *label)
 {
   int	i;
 
@@ -56,4 +56,27 @@ int	check_good_label(char *label)
       i++;
     }
   return (1);
+}
+
+void		decrease_label(t_label *babybel, t_data *data)
+{
+  int		size;
+  char		t;
+
+  size = 1;
+  if (!babybel || !data)
+    return ;
+  while (data->next)
+    data = data->next;
+  t = data->inst;
+  if (t == 1 || t == 12 || t == 15 || t == 16)
+    size += 4;
+  else
+    size += get_type_size(t, data);
+  babybel->lpos -= size;
+  while (babybel->next)
+    {
+      babybel = babybel->next;
+      babybel->lpos -= size;
+    }
 }

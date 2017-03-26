@@ -5,12 +5,12 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Mar 23 23:29:46 2017 Romain LANCIA
-** Last update Thu Mar 23 23:54:04 2017 Romain LANCIA
+** Last update Sun Mar 26 18:29:41 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
 
-static int	get_type_size(char t, t_data *list)
+int	get_type_size(char t, t_data *list)
 {
   int		size;
   int		i;

@@ -5,16 +5,12 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Sun Mar 26 15:47:29 2017 Luc
+## Last update Sun Mar 26 18:57:02 2017 Thibaut Cornolti
 ##
 
 SRC	=	asm.c			\
 		endian.c		\
-		instruction_first.c	\
-		instruction_mid.c	\
-		instruction_mid_next.c	\
-		instruction_last.c	\
-		instruction_gen.c	\
+		instruction.c		\
 		utils.c			\
 		header.c		\
 		parsing.c		\
@@ -22,6 +18,7 @@ SRC	=	asm.c			\
 		parsing_reading_info.c	\
 		label.c			\
 		verify_type_arg.c	\
+		writer.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 
