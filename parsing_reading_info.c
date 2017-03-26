@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Sun Mar 26 15:59:19 2017 Luc
+** Last update Sun Mar 26 17:03:08 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -60,7 +60,7 @@ char	get_inst(char *s)
   return (0);
 }
 
-int		get_info_line(char *line, t_data **list, t_label *babybel)
+int		get_info_line(char *line, t_data **list, t_label **babybel)
 {
   int		i;
   int		t;
@@ -71,11 +71,11 @@ int		get_info_line(char *line, t_data **list, t_label *babybel)
   tab = my_strsplit(line, " ,\t");
   i = 1;
   if ((get_inst(tab[0])) == 0)
-    if ((label(my_strdup(tab[0]), &babybel)) == 84)
+    if ((label(my_strdup(tab[0]), babybel)) == 84)
       return (84);
   while (tab[i] != NULL)
     {
-      arg[i - 1].type = verify_type_arg(tab[i], &t, babybel);
+      arg[i - 1].type = verify_type_arg(tab[i], &t, *babybel);
       arg[i - 1].arg = t;
       i++;
     }

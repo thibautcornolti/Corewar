@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 16:52:43 2017 Bastien
+** Last update Sun Mar 26 16:59:47 2017 Thibaut Cornolti
 */
 
 #include "my.h"
