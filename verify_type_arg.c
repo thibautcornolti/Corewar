@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Sun Mar 26 15:47:09 2017 Luc
+** Last update Sun Mar 26 15:59:38 2017 Luc
 */
 
 #include <stdio.h>
@@ -75,7 +75,7 @@ int	is_it_a_indirect_arg(char *arg, int *nb)
   return (1);
 }
 
-int     verify_type_arg(char *str, int *i, t_label **babybel)
+int     verify_type_arg(char *str, int *i, t_label *babybel)
 {
   int	nb;
   int	ret;
@@ -88,7 +88,7 @@ int     verify_type_arg(char *str, int *i, t_label **babybel)
     ret = T_REG;
   else if (is_it_a_indirect_arg(str, &nb) == 1)
     ret = T_IND;
-  else if (is_it_a_label_arg(str, &nb, *babybel) == 1)
+  else if (is_it_a_label_arg(str, &nb, babybel) == 1)
     ret = T_DIR;
   else
     return (84);

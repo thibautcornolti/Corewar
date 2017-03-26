@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Sun Mar 26 15:31:26 2017 Luc
+** Last update Sun Mar 26 15:59:02 2017 Luc
 */
 
 #ifndef ASM_H_
@@ -55,6 +55,7 @@ typedef struct		s_label
   struct s_label	*next;
 }			t_label;
 
+char		get_inst(char *);
 void		write_endian(int, void *, int);
 int		make_header(char **, t_header *);
 int		contains_char(char, char *);
@@ -66,11 +67,13 @@ int		pre_start_header(int, t_header *);
 int		get_fd_cor(char *);
 char		*skip_comm(int);
 int		inst_gen(char, t_arg[], int, int);
-int		get_info_line(char *, t_data **, t_label **);
-int		verify_type_arg(char *, int *);
+int		get_info_line(char *, t_data **, t_label *);
+int		verify_type_arg(char *, int *, t_label *);
 int		get_prog_size(t_data *);
 void		write_header(int, t_header *);
 int		nbr_arg(char);
 void		add_octet_to_list(t_label *, int);
+int		label(char *, t_label **);
+int		get_label_pos(char *, t_label *);
 
 #endif /* !ASM_H_ */

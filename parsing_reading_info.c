@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Sun Mar 26 15:44:58 2017 Luc
+** Last update Sun Mar 26 15:59:19 2017 Luc
 */
 
 #include <stdio.h>
@@ -45,7 +45,7 @@ static void	my_put_in_list(t_data **list, char inst, t_arg arg[3])
     *list = elem;
 }
 
-static char	get_inst(char *s)
+char	get_inst(char *s)
 {
   const char	*insts[16] = {"live", "ld", "st", "add",
 			     "sub", "and", "or", "xor",
@@ -60,7 +60,7 @@ static char	get_inst(char *s)
   return (0);
 }
 
-int		get_info_line(char *line, t_data **list, t_label **babybel)
+int		get_info_line(char *line, t_data **list, t_label *babybel)
 {
   int		i;
   int		t;
@@ -71,7 +71,7 @@ int		get_info_line(char *line, t_data **list, t_label **babybel)
   tab = my_strsplit(line, " ,\t");
   i = 1;
   if ((get_inst(tab[0])) == 0)
-    if ((fonction_de_bastien(babybel, my_strdup(tab[0]))) == 84)
+    if ((label(my_strdup(tab[0]), &babybel)) == 84)
       return (84);
   while (tab[i] != NULL)
     {

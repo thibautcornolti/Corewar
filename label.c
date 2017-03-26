@@ -5,15 +5,18 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 15:44:53 2017 Bastien
+** Last update Sun Mar 26 15:55:24 2017 Luc
 */
 
 #include "my.h"
+#include "asm.h"
+#include <stdlib.h>
 
 int	get_label_pos(char *name, t_label *label)
 {
   t_label	*temp;
 
+  temp = label;
   while (temp && my_strncmp(name, temp->lname, my_strlen(name)) && temp->next)
     temp = temp->next;
   if (!my_strncmp(name, temp->lname, my_strlen(name)))
@@ -21,7 +24,7 @@ int	get_label_pos(char *name, t_label *label)
   return (84);
 }
 
-int		*label(char *fname, t_label **label)
+int		label(char *fname, t_label **label)
 {
   t_label	*temp;
   t_label	*new;
