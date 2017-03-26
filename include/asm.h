@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Thu Mar 23 23:57:32 2017 Romain LANCIA
+** Last update Sun Mar 26 15:02:22 2017 Bastien
 */
 
 #ifndef ASM_H_
@@ -47,6 +47,13 @@ typedef struct	s_data
   t_arg		arg[3];
   struct s_data	*next;
 }		t_data;
+
+typedef struct		s_label
+{
+  char			*lname;
+  int			lpos;
+  struct s_label	next;
+}			t_label;
 
 void		write_endian(int, void *, int);
 int		make_header(char **, t_header *);
