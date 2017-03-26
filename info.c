@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Mon Mar 20 13:22:56 2017 Thibaut Cornolti
-** Last update Mon Mar 20 13:23:43 2017 Thibaut Cornolti
+** Last update Sun Mar 26 15:19:12 2017 Luc
 */
 
 int		take_info(char *path)
@@ -23,4 +23,13 @@ int		take_info(char *path)
     }
   close(fd);
   return (line);
+}
+
+void		add_octet_to_list(t_label *vache_qui_rit, int i)
+{
+  while (vache_qui_rit != NULL)
+    {
+      l_pos += i;
+      vache_qui_rit = vache_qui_rit->next;
+    }
 }

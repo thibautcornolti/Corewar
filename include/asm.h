@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Sun Mar 26 15:11:25 2017 Bastien
+** Last update Sun Mar 26 15:31:26 2017 Luc
 */
 
 #ifndef ASM_H_
@@ -66,10 +66,11 @@ int		pre_start_header(int, t_header *);
 int		get_fd_cor(char *);
 char		*skip_comm(int);
 int		inst_gen(char, t_arg[], int, int);
-int		get_info_line(char *, t_data **);
+int		get_info_line(char *, t_data **, t_label **);
 int		verify_type_arg(char *, int *);
 int		get_prog_size(t_data *);
 void		write_header(int, t_header *);
 int		nbr_arg(char);
+void		add_octet_to_list(t_label *, int);
 
 #endif /* !ASM_H_ */

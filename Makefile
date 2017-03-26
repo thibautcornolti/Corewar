@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Thu Mar 23 23:54:18 2017 Romain LANCIA
+## Last update Sun Mar 26 15:47:29 2017 Luc
 ##
 
 SRC	=	asm.c			\
@@ -20,6 +20,7 @@ SRC	=	asm.c			\
 		parsing.c		\
 		size.c			\
 		parsing_reading_info.c	\
+		label.c			\
 		verify_type_arg.c	\
 
 OBJS	=	$(SRCS:.c=.o)

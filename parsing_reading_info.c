@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Fri Mar 24 00:01:44 2017 Romain LANCIA
+** Last update Sun Mar 26 15:44:58 2017 Luc
 */
 
 #include <stdio.h>
@@ -60,7 +60,7 @@ static char	get_inst(char *s)
   return (0);
 }
 
-int		get_info_line(char *line, t_data **list)
+int		get_info_line(char *line, t_data **list, t_label **babybel)
 {
   int		i;
   int		t;
@@ -70,9 +70,12 @@ int		get_info_line(char *line, t_data **list)
   my_memset(arg, 0, sizeof(t_arg) * 3);
   tab = my_strsplit(line, " ,\t");
   i = 1;
+  if ((get_inst(tab[0])) == 0)
+    if ((fonction_de_bastien(babybel, my_strdup(tab[0]))) == 84)
+      return (84);
   while (tab[i] != NULL)
     {
-      arg[i - 1].type = verify_type_arg(tab[i], &t);
+      arg[i - 1].type = verify_type_arg(tab[i], &t, babybel);
       arg[i - 1].arg = t;
       i++;
     }
