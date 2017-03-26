@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Sun Mar 26 17:25:36 2017 Thibaut Cornolti
+** Last update Sun Mar 26 17:40:57 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -44,7 +44,7 @@ int	is_it_a_label_arg(char *arg, int *nb, t_label *babybel)
 {
   if ((get_inst(arg)) == 0)
     {
-      *nb = get_label_pos(arg, babybel);
+      *nb = get_label_pos(arg + 2, babybel);
       return (1);
     }
   return (0);
