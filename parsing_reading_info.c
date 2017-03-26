@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Sun Mar 26 17:35:52 2017 Thibaut Cornolti
+** Last update Sun Mar 26 17:50:40 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -62,7 +62,7 @@ char	get_inst(char *s)
 
 static int	check_label(char *lname, t_label **babybel)
 {
-  if ((get_inst(lname)) == 0)
+  if ((get_inst(lname)) == 0 && check_good_label(lname))
     {
       if ((label(my_strdup(lname), babybel)) == 84)
 	exit(0 + my_puterror("Multiple definition of the same label."));

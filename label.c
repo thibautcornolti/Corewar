@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 17:42:04 2017 Luc
+** Last update Sun Mar 26 17:50:49 2017 Thibaut Cornolti
 */
 
 #include "my.h"
@@ -51,11 +51,9 @@ int	check_good_label(char *label)
   i = 0;
   while(label[i] != '\0')
     {
-      if (!((label[i] >= 'a' && label[i] <= 'z') ||
-	    (label[i] >= '1' && label[i] <= '9') ||
-	    label[i] == '_'))
-	return (1);
+      if (!contains_char(label[i], LABEL_CHARS))
+	return (0);
       i++;
     }
-  return (0);
+  return (1);
 }
