@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 15:55:24 2017 Luc
+** Last update Sun Mar 26 16:01:27 2017 Thibaut Cornolti
 */
 
 #include "my.h"
@@ -40,6 +40,6 @@ int		label(char *fname, t_label **label)
     return (84);
   *label = (*label) ? *label : new;
   new->lname = fname;
-  *temp->next = (*label = temp) ? 0 : new;
+  temp->next = (*label == temp) ? NULL : new;
   return (0);
 }
