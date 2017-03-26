@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Sun Mar 26 17:02:10 2017 Thibaut Cornolti
+** Last update Sun Mar 26 17:23:56 2017 Luc
 */
 
 #include <stdio.h>
@@ -15,19 +15,28 @@
 int     is_it_a_direct_arg(char *arg, int *nb)
 {
   int   i;
-  
+  int	nega;
+
   i = 0 + 0 * (*nb = 0);
+  nega = 1;
   if (arg[0] != '%')
     return (0);
   else
-    arg += 1; 
+    arg += 1;
+  if (arg[0] == '-')
+    {
+      arg += 1;
+      nega *= -1;
+    }
+  else if (arg[0] == '+')
+    arg += 1;
   while (arg[i] != '\0')
     {
       if (arg[i] < '0' || arg[i] > '9')
   	return (0);
       i++;
     }
-  *nb = my_getnbr(arg);
+  *nb = my_getnbr(arg) * nega;
   return (1);
 }
 
@@ -50,6 +59,13 @@ int     is_it_a_register_arg(char *arg, int *nb)
     return (0);
   else
     arg += 1;
+  if (arg[0] == '-')
+    {
+      arg += 1;
+      nega *= -1;
+    }
+  else if (arg[0] == '+')
+    arg += 1;
   while (arg[i] != '\0')
     {
       if (arg[i] < '0' || arg[i] > '9')
@@ -65,6 +81,13 @@ int	is_it_a_indirect_arg(char *arg, int *nb)
   int   i;
   
   i = 0 + 0 * (*nb = 0);
+  if (arg[0] == '-')
+    {
+      arg += 1;
+      nega *= -1;
+    }
+  else if (arg[0] == '+')
+    arg += 1;
   while (arg[i] != '\0')
     {
       if (arg[i] < '0' || arg[i] > '9')
