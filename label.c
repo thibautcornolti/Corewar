@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 17:50:49 2017 Thibaut Cornolti
+** Last update Sun Mar 26 18:17:03 2017 Thibaut Cornolti
 */
 
 #include "my.h"
@@ -19,7 +19,7 @@ int	get_label_pos(char *name, t_label *label)
   temp = label;
   while (temp && my_strncmp(name, temp->lname, my_strlen(name)) && temp->next)
     temp = temp->next;
-  if (!my_strncmp(name, temp->lname, my_strlen(name)))
+  if (temp && !my_strncmp(name, temp->lname, my_strlen(name)))
     return (temp->lpos);
   return (84);
 }
