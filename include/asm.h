@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Sun Mar 26 18:39:08 2017 Thibaut Cornolti
+** Last update Tue Mar 28 11:00:45 2017 Luc
 */
 
 #ifndef ASM_H_
@@ -14,6 +14,7 @@
 # define MAGIC			0xea83f3
 # define NAME_LENGTH		128
 # define COMMENT_LENGTH		2048
+# define IDX_MOD		512
 # define COMMENT_CHAR		'#'
 # define LABEL_CHAR		':'
 # define DIRECT_CHAR		'%'
@@ -68,7 +69,7 @@ int		pre_start_header(int, t_header *);
 int		get_fd_cor(char *);
 char		*skip_comm(int);
 int		inst_gen(char, t_arg[], int, int);
-int		get_info_line(char *, t_data **, t_label **);
+int		get_info_line(char *, t_data **, t_label **, int);
 int		verify_type_arg(char *, int *, t_label *);
 int		get_prog_size(t_data *);
 void		write_header(int, t_header *);

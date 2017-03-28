@@ -5,16 +5,26 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:24:23 2017 Thibaut Cornolti
-** Last update Sun Mar 26 19:02:42 2017 Thibaut Cornolti
+** Last update Tue Mar 28 11:05:16 2017 Luc
 */
 
 #include <unistd.h>
 #include "asm.h"
 
-int		inst_spec(char inst, t_arg args[4], int fd)
+int		inst_live(char inst, t_arg args[4], int fd)
 {
   write (fd, &inst, 1);
   write_endian(fd, &(args[0].arg), 4);
+  return (0);
+}
+
+int		inst_ind(char inst, t_arg args[4], int fd)
+{
+  short		arg;
+
+  write (fd, &inst, 1);
+  arg = args[0].arg;
+  write_endian(fd, &(arg), 2);
   return (0);
 }
 

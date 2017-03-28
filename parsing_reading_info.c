@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Sun Mar 26 19:08:14 2017 Thibaut Cornolti
+** Last update Tue Mar 28 10:48:24 2017 Luc
 */
 
 #include <stdio.h>
@@ -54,28 +54,35 @@ char	get_inst(char *s)
   int		i;
 
   i = -1;
+  if (!s)
+    return (0);
   while (++i < 16)
     if (!my_strcmp(s, (char *) insts[i]))
       return (i + 1);
   return (0);
 }
 
-static int	check_label(char *lname, t_label **babybel)
+static int	check_label(char *lname, t_label **babybel, int fill)
 {
   if (get_inst(lname))
     return (0);
   lname[my_strlen(lname) - 1] = 0;
   if (check_good_label(lname))
     {
-      if ((label(my_strdup(lname), babybel)) == 84)
-	exit(0 + my_puterror("Multiple definition of the same label."));
+      if (!fill)
+	return (1);
+      else if ((label(my_strdup(lname), babybel)) == 84)
+	{
+	  my_puterror(lname);
+	  exit(0 + my_puterror(": Multiple definition of the same label.\n"));
+	}
       else
 	return (1);
     }
   return (0);
 }
 
-int		get_info_line(char *line, t_data **list, t_label **babybel)
+int		get_info_line(char *line, t_data **list, t_label **babybel, int fill)
 {
   int		i;
   int		t;
@@ -83,9 +90,11 @@ int		get_info_line(char *line, t_data **list, t_label **babybel)
   t_arg		arg[3];
 
   my_memset(arg, 0, sizeof(t_arg) * 3);
+  if (!line || !line[0])
+    return (0);
   tab = my_strsplit(line, " ,\t");
   i = 1;
-  tab += check_label(tab[0], babybel);
+  tab += check_label(tab[0], babybel, fill);
   while (tab[i] != NULL)
     {
       arg[i - 1].type = verify_type_arg(tab[i], &t, *babybel);

@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Mar 23 23:29:46 2017 Romain LANCIA
-** Last update Sun Mar 26 18:29:41 2017 Thibaut Cornolti
+** Last update Tue Mar 28 11:10:01 2017 Luc
 */
 
 #include "asm.h"
@@ -38,8 +38,10 @@ int		get_prog_size(t_data *list)
     {
       size += 1;
       t = list->inst;
-      if (t == 1 || t == 12 || t == 15 || t == 16)
+      if (t == 1)
 	size += 4;
+      else if (t == 9 || t == 12 || t == 15)
+	size += 2;
       else
         size += get_type_size(t, list);
       list = list->next;

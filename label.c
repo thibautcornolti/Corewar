@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Sun Mar 26 18:36:47 2017 Thibaut Cornolti
+** Last update Tue Mar 28 10:26:14 2017 Luc
 */
 
 #include <stdlib.h>
@@ -17,9 +17,9 @@ int	get_label_pos(char *name, t_label *label)
   t_label	*temp;
 
   temp = label;
-  while (temp && my_strncmp(name, temp->lname, my_strlen(name)) && temp->next)
+  while (temp && my_strcmp(name, temp->lname) && temp->next)
     temp = temp->next;
-  if (temp && !my_strncmp(name, temp->lname, my_strlen(name)))
+  if (temp && !my_strcmp(name, temp->lname))
     return (temp->lpos);
   return (84);
 }
@@ -34,10 +34,10 @@ int		label(char *fname, t_label **label)
   my_memset(new, 0, sizeof(t_label));
   *label = (*label) ? *label : new;
   temp = *label;
-  while (temp && temp->lname && my_strncmp(fname, temp->lname, my_strlen(fname))
+  while (temp && temp->lname && my_strcmp(fname, temp->lname)
 	 && temp->next)
     temp = temp->next;
-  if (temp && temp->lname && !my_strncmp(fname, temp->lname, my_strlen(fname)))
+  if (temp && temp->lname && !my_strcmp(fname, temp->lname))
     return (84);
   new->lname = fname;
   temp->next = (new == temp) ? NULL : new;
