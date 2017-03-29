@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Sun Mar 26 17:55:47 2017 Thibaut Cornolti
+** Last update Wed Mar 29 20:15:03 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -74,7 +74,7 @@ int     is_it_a_register_arg(char *arg, int *nb)
   	return (0);
       i++;
     }
-  *nb = my_getnbr(arg);
+  *nb = my_getnbr(arg) * nega;
   return (1);
 }
 
@@ -98,7 +98,7 @@ int	is_it_a_indirect_arg(char *arg, int *nb)
   	return (0);
       i++;
     }
-  *nb = my_getnbr(arg);
+  *nb = my_getnbr(arg) * nega;
   return (1);
 }
 

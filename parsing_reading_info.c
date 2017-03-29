@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Wed Mar 29 18:41:51 2017 Thibaut Cornolti
+** Last update Wed Mar 29 19:41:32 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -97,6 +97,7 @@ int		get_info_line(char *line, t_data **list, t_label **babybel, int fill)
   tab += check_label(tab[0], babybel, fill);
   if (!*tab)
     return (0);
+  
   while (tab[i] != NULL)
     {
       arg[i - 1].type = verify_type_arg(tab[i], &t, *babybel);

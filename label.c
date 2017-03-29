@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Wed Mar 29 16:44:32 2017 Thibaut Cornolti
+** Last update Wed Mar 29 19:33:21 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -103,6 +103,7 @@ void		decrease_label_all(t_label *babybel, t_data *data)
 	size += get_type_size(t, data);
       data = data->next;
     }
+  babybel->lpos += size;
   while (babybel->next)
     {
       babybel = babybel->next;
