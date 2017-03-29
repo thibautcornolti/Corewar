@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Tue Mar 28 10:26:14 2017 Luc
+** Last update Wed Mar 29 16:44:32 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -69,8 +69,10 @@ void		decrease_label(t_label *babybel, t_data *data)
   while (data->next)
     data = data->next;
   t = data->inst;
-  if (t == 1 || t == 12 || t == 15 || t == 16)
+  if (t == 1)
     size += 4;
+  else if (t == 9 || t == 12 || t == 15)
+    size += 2;
   else
     size += get_type_size(t, data);
   babybel->lpos -= size;
@@ -79,4 +81,32 @@ void		decrease_label(t_label *babybel, t_data *data)
       babybel = babybel->next;
       babybel->lpos -= size;
     }
+}
+
+void		decrease_label_all(t_label *babybel, t_data *data)
+{
+  int		size;
+  char		t;
+
+  size = 0;
+  if (!babybel || !data)
+    return ;
+  while (data)
+    {
+      size += 1;
+      t = data->inst;
+      if (t == 1)
+	size += 4;
+      else if (t == 9 || t == 12 || t == 15)
+	size += 2;
+      else
+	size += get_type_size(t, data);
+      data = data->next;
+    }
+  while (babybel->next)
+    {
+      babybel = babybel->next;
+      babybel->lpos += size;
+    }
+  dprintf(2, "all increased: %d\n", size);
 }

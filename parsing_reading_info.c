@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Tue Mar 28 10:48:24 2017 Luc
+** Last update Wed Mar 29 18:41:51 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -95,6 +95,8 @@ int		get_info_line(char *line, t_data **list, t_label **babybel, int fill)
   tab = my_strsplit(line, " ,\t");
   i = 1;
   tab += check_label(tab[0], babybel, fill);
+  if (!*tab)
+    return (0);
   while (tab[i] != NULL)
     {
       arg[i - 1].type = verify_type_arg(tab[i], &t, *babybel);
@@ -102,14 +104,6 @@ int		get_info_line(char *line, t_data **list, t_label **babybel, int fill)
       i++;
     }
   my_put_in_list(list, get_inst(tab[0]), arg);
-  /* t_data *oui = *list; */
-  /* while (oui) */
-  /*   { */
-  /*     printf("inst = %d\n", oui->inst); */
-  /*     printf("type = %d | arg = %d\n", oui->arg[0].type, oui->arg[0].arg); */
-  /*     printf("type2 = %d | arg1 = %d\n\n", oui->arg[1].type, oui->arg[1].arg); */
-  /*     oui = oui->next; */
-  /*   } */
-  /* printf("------------\n"); */
+  decrease_label(*babybel, *list);
   return (0);
 }

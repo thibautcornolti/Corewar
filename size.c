@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Mar 23 23:29:46 2017 Romain LANCIA
-** Last update Tue Mar 28 11:10:01 2017 Luc
+** Last update Wed Mar 29 16:40:47 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
@@ -18,13 +18,7 @@ int	get_type_size(char t, t_data *list)
   size = 1;
   i = -1;
   while (++i < nbr_arg(t))
-    {
-      if (list->arg[i].type == T_DIR &&
-	  (t == 10 || t == 11 || t == 13))
-	size += 4;
-      else
-	size += type_to_size(list->arg[i].type);
-    }
+    size += type_to_size(list->inst, list->arg[i].type);
   return (size);
 }
 

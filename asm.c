@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Tue Mar 28 10:50:22 2017 Luc
+** Last update Wed Mar 29 18:01:57 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -30,13 +30,12 @@ int		start_asm(char *name, int fd_s, t_label **babybel)
     return (84);
   while ((line = skip_comm(fd_s)))
     {
-      decrease_label(*babybel, list);
       if ((get_info_line(my_epure_str(line), &list, babybel, 0)) == 84)
 	return (84);
     }
   header.prog_size = get_prog_size(list);
-  write_header(1/* fd_cor */, &header);
-  write_data(1/* fd_cor */, list);
+  write_header(fd_cor, &header);
+  write_data(fd_cor, list);
   close(fd_cor);
   return (0);
 }
@@ -55,11 +54,15 @@ int		fill_label(char *name, int fd_s, t_label **babybel)
     return (84);
   while ((line = skip_comm(fd_s)))
     {
-      decrease_label(*babybel, list);
       if ((get_info_line(my_epure_str(line), &list, babybel, 1)) == 84)
 	return (84);
+      if (*babybel)
+	dprintf(2, "%s: %d\n", (*babybel)->lname, (*babybel)->lpos);
+      else
+	dprintf(2, "null: 0\n");
     }
   header.prog_size = get_prog_size(list);
+  decrease_label_all(*babybel, list);
   close(fd_cor);
   return (0);
 }
