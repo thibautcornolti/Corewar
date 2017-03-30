@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 21:18:18 2017 Bastien
+** Last update Thu Mar 30 21:19:29 2017 Bastien
 */
 
 #ifndef VM_H_
@@ -15,7 +15,9 @@
 # define MEM_SIZE		(6*1024)
 # define IDX_MOD		521
 # define MAX_ARGS_NUMBER	4
+
 # define CYCLE_TO_DIE		1536
+# define CYCLE_DELTA		1
 
 # define REG_NUMBER		16
 # define DIR_SIZE		4
