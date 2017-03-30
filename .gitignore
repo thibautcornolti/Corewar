@@ -1,5 +1,5 @@
 asm
-vm
+corewar
 *.cor
 *.s
 champion/*
