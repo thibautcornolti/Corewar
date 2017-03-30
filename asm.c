@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Thu Mar 30 09:15:00 2017 Thibaut Cornolti
+** Last update Thu Mar 30 09:21:03 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -30,7 +30,8 @@ int		start_asm(char *name, int fd_s, t_label **babybel)
     return (84);
   while ((line = skip_comm(fd_s)))
     {
-      if ((get_info_line(my_epure_str(line), &list, babybel, 0)) == 84)
+      if ((get_info_line(my_epure_str(line),
+			 &list, babybel, 0)) == 84)
 	return (84);
     }
   header.prog_size = get_prog_size(list);

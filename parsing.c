@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Thu Mar 30 09:14:32 2017 Thibaut Cornolti
+** Last update Thu Mar 30 09:26:19 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -78,7 +78,7 @@ char		*get_the_name_of_file(char *path, int i)
   dest[j] = '\0';
   if (path[j] != '.')
     return (NULL);
-  return (my_strcat(dest,".cor"));
+  return (my_strcat(dest, ".cor"));
 }
 
 char		*get_file(char *path)
@@ -99,7 +99,7 @@ char		*get_file(char *path)
   dest[i] = '\0';
   if (path[i] != '.')
     return (NULL);
-  return (my_strcat(dest,".cor"));
+  return (my_strcat(dest, ".cor"));
 }
 
 int		make_header(char *file[2], t_header *header)

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:24:23 2017 Thibaut Cornolti
-** Last update Wed Mar 29 15:29:57 2017 Thibaut Cornolti
+** Last update Thu Mar 30 09:21:24 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -43,10 +43,13 @@ int		inst_gen(char inst, t_arg args[4], int len, int fd)
   write(fd, &(type), 1);
   write_endian(fd, &(args[0].arg), type_to_size(inst, args[0].type));
   if (len >= 2)
-    write_endian(fd, &(args[1].arg), type_to_size(inst, args[1].type));
+    write_endian(fd, &(args[1].arg),
+		 type_to_size(inst, args[1].type));
   if (len >= 3)
-    write_endian(fd, &(args[2].arg), type_to_size(inst, args[2].type));
+    write_endian(fd, &(args[2].arg),
+		 type_to_size(inst, args[2].type));
   if (len >= 4)
-    write_endian(fd, &(args[3].arg), type_to_size(inst, args[3].type));
+    write_endian(fd, &(args[3].arg),
+		 type_to_size(inst, args[3].type));
   return (0);
 }

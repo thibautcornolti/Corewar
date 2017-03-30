@@ -5,16 +5,16 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Wed Mar 29 20:15:03 2017 Thibaut Cornolti
+** Last update Thu Mar 30 09:23:56 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
 #include "asm.h"
 #include "my.h"
 
-int     is_it_a_direct_arg(char *arg, int *nb)
+int	is_it_a_direct_arg(char *arg, int *nb)
 {
-  int   i;
+  int	i;
   int	nega;
 
   i = 0 + 0 * (*nb = 0);
@@ -50,11 +50,11 @@ int	is_it_a_label_arg(char *arg, int *nb, t_label *babybel)
   return (0);
 }
 
-int     is_it_a_register_arg(char *arg, int *nb)
+int	is_it_a_register_arg(char *arg, int *nb)
 {
-  int   i;
+  int	i;
   int	nega;
-  
+
   i = 0 + 0 * (*nb = 0);
   nega = 1;
   if (arg[0] != 'r')
@@ -80,7 +80,7 @@ int     is_it_a_register_arg(char *arg, int *nb)
 
 int	is_it_a_indirect_arg(char *arg, int *nb)
 {
-  int   i;
+  int	i;
   int	nega;
 
   i = 0 + 0 * (*nb = 0);
@@ -102,11 +102,11 @@ int	is_it_a_indirect_arg(char *arg, int *nb)
   return (1);
 }
 
-int     verify_type_arg(char *str, int *i, t_label *babybel)
+int	verify_type_arg(char *str, int *i, t_label *babybel)
 {
   int	nb;
   int	ret;
-  
+
   *i = 0;
   ret = 0;
   if (is_it_a_direct_arg(str, &nb) == 1)

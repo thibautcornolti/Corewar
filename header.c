@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 14:19:52 2017 Luc
-** Last update Thu Mar 30 09:16:19 2017 Thibaut Cornolti
+** Last update Thu Mar 30 09:24:34 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -41,8 +41,8 @@ int		get_fd_cor(char *name)
 
   if ((pathcor = get_file(name)) == NULL)
     return (-1);
-  if ((fd_cor = open(pathcor, O_RDWR | O_TRUNC | O_CREAT, S_IRWXU |
-		     S_IRWXG | S_IRWXO)) <= 0)
+  if ((fd_cor = open(pathcor, O_RDWR | O_TRUNC | O_CREAT,
+		     S_IRWXU | S_IRWXG | S_IRWXO)) <= 0)
     return (-1);
   return (fd_cor);
 }
