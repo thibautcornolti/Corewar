@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Thu Mar 30 18:19:32 2017 Thibaut Cornolti
+** Last update Thu Mar 30 21:30:14 2017 Thibaut Cornolti
 */
 
 #include <fcntl.h>
@@ -55,16 +55,5 @@ int		translate(t_ptr *ptr, const char *map)
   size += fill_arg(&inst, map + 2 + ptr->index_map);
   write(1, map, 9);
   ptr->index_map += size;
-  return (0);
-}
-
-int		main()
-{
-  char		buffer[10000];
-  int		fd;
-
-  fd = open("test.cor", O_RDONLY);
-  read(fd, buffer, 9999);
-  dprintf(2, "\nDECALAGE: %d\n", translate(buffer + 0x890));
   return (0);
 }

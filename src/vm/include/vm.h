@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 21:19:29 2017 Bastien
+** Last update Thu Mar 30 21:35:32 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -29,15 +29,17 @@
 # define T_DIR			2
 # define T_IND			4
 
-typedef struct	s_ptr
+typedef struct s_champ	t_champ;
+
+typedef struct		s_ptr
 {
-  t_champ	*father;
-  char		carry;
-  int		live;
-  int		cycle;
-  int		index_map;
-  struct s_ptr	*next;
-}		t_ptr;
+  t_champ		*father;
+  char			carry;
+  int			live;
+  int			cycle;
+  int			index_map;
+  struct s_ptr		*next;
+}			t_ptr;
 
 typedef struct		s_champ
 {
@@ -45,26 +47,26 @@ typedef struct		s_champ
   char			*comment;
   t_ptr			*chained_ptr;
   int			reg[REG_SIZE];
-  static s_champ	*next;
+  struct s_champ	*next;
 }			t_champ;
 
-typedef struct	s_arg
+typedef struct		s_arg
 {
-  char		type;
-  int		arg;
-}		t_arg;
+  char			type;
+  int			arg;
+}			t_arg;
 
-typedef struct	s_inst
+typedef struct		s_inst
 {
-  char		inst;
-  t_arg		arg[3];
-}		t_inst;
+  char			inst;
+  t_arg			arg[3];
+}			t_inst;
 
-typedef struct	s_map
+typedef struct		s_map
 {
-  char	arena[MEM_SIZE + 1];
-  char	color[MEM_SIZE + 1];
-}		t_map;
+  char			arena[MEM_SIZE + 1];
+  char			color[MEM_SIZE + 1];
+}			t_map;
 
 typedef struct          s_cmd
 {
@@ -74,17 +76,20 @@ typedef struct          s_cmd
   struct s_cmd          *next;
 }			t_cmd;		
 
-typedef struct	s_header
+typedef struct		s_header
 {
-  int           magic;
-  char          prog_name[NAME_LENGTH + 1];
-  int           prog_size;
-  char          comment[COMMENT_LENGTH + 1];
-}		t_header;
+  int			magic;
+  char			prog_name[NAME_LENGTH + 1];
+  int			prog_size;
+  char			comment[COMMENT_LENGTH + 1];
+}			t_header;
 
-int		binary_to_type(char);
-int		type_to_size(char, char);
-void		*endian(void *, int);
-void		my_memncpy(void *, void *, int);
+int			binary_to_type(char);
+int			type_to_size(char, char);
+void			*endian(void *, int);
+void			my_memncpy(void *, void *, int);
+int			check_end(t_champ *);
+int			pars_cmd(t_cmd **, char **);
+t_champ			*load_champ(t_champ *, t_map *, t_cmd *);
 
 #endif	/* !VM_H_ */

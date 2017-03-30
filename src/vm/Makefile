@@ -5,10 +5,16 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Thu Mar 30 12:40:17 2017 Luc
+## Last update Thu Mar 30 21:21:27 2017 Thibaut Cornolti
 ##
 
 SRC	=	parsing.c			\
+		alive.c				\
+		charge_champ.c			\
+		endian.c			\
+		google_translate.c		\
+		utils_translate.c		\
+		vm.c
 
 OBJS	=	$(SRCS:.c=.o)
 
