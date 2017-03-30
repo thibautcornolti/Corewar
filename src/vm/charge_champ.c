@@ -5,37 +5,17 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Thu Mar 30 16:08:23 2017 Bastien
+** Last update Thu Mar 30 18:44:08 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
-
-static char	*my_revnstr(char *str, int length)
-{
-  int		count;
-  char		temp;
-
-  count = length;
-  if (length > 1)
-    {
-      count = 0;
-      while (count < length / 2)
-	{
-	  temp = str[count];
-	  str[count] = str[length - count - 1];
-	  str[length - count - 1] = temp;
-	  count += 1;
-	}
-    }
-  return (str);
-}
 
 int	check_magic(int *nbr)
 {
   char	*str;
 
   str = nbr;
-  my_revnstr(str, sizeof(int));
+  endian(str, sizeof(int));
   nbr = str;
   if (*nbr != MAGIC)
     return (84);
