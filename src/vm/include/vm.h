@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 16:45:32 2017 Thibaut Cornolti
+** Last update Thu Mar 30 16:56:52 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -24,21 +24,21 @@
 
 typedef struct	s_lchamp
 {
-  char	*name;
-  char	*comment;
+  char		*name;
+  char		*comment;
 }		t_lchamp;
-
-typedef struct	s_inst
-{
-  char		inst;
-  t_arg		arg[3];
-}		t_inst;
 
 typedef struct	s_arg
 {
   char		type;
   int		arg;
 }		t_arg;
+
+typedef struct	s_inst
+{
+  char		inst;
+  t_arg		arg[3];
+}		t_inst;
 
 typedef struct	s_header
 {
