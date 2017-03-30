@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 21:11:24 2017 Bastien
+** Last update Thu Mar 30 21:12:59 2017 Bastien
 */
 
 #ifndef VM_H_
@@ -62,6 +62,14 @@ typedef struct	s_map
   char	arena[MEM_SIZE + 1];
   char	color[MEM_SIZE + 1];
 }		t_map;
+
+typedef struct          s_cmd
+{
+  int                   prog_number;
+  int                   load_adress;
+  char                  *prog_name;
+  struct s_cmd          *next;
+}			t_cmd;		
 
 typedef struct	s_header
 {
