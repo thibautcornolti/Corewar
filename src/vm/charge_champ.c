@@ -5,49 +5,73 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Thu Mar 30 18:44:08 2017 Thibaut Cornolti
+** Last update Thu Mar 30 21:11:58 2017 Bastien
 */
 
 #include "vm.h"
 
 int	check_magic(int *nbr)
 {
-  char	*str;
-
-  str = nbr;
-  endian(str, sizeof(int));
-  nbr = str;
+  endian(nbr, sizeof(int));
   if (*nbr != MAGIC)
     return (84);
   return (0);
 }
 
-char	*add_champ(char *arena, char *name, int rank)
+int		add_cmap(t_map *arena, t_champion *champ, t_cmd *cmd, int fd)
 {
-  int	i;
-  char	c;
+  static int	i = 0;
+  char		c;
+  int		j;
 
-  if (!arena)
-    if ((arena = maloc(sizeof(char) * (MEM_SIZE + 1))) == 0)
-      return (0);
-  while (++i < MEM_SIZE && arena[i]);
-  i -= 1;
+  j = i;
   while (++i < MEM_SIZE && write(fd, &c, 1))
-    arena[i] = c;
-  arena[i] = 0;
-  return (arena); 
+    {
+      arena[i] = c;
+      color[i] = cmd->prog_number;
+    }
+  i -= 1;
+  return (j);
 }
 
-void		load_champ(t_champ *champ, t_arena *arena, int fd, int rank)
+void		add_champ(t_header *header, int pos, t_champ *champ, t_cmd *cmd)
+{
+  t_champ	*new;
+  t_champ	*temp;
+  t_ptr		*son;
+
+  if ((new = malloc(sizeof(t_champ))) == 0)
+    return ;
+  new->name = my_strdup(&header->name);
+  new->comment = my_strdup(&header->comment);
+  my_memset(new->reg, 0, sizeof(int) * REG_SIZE);
+  new-reg[0] = cmd->prog_number;
+  new->next = 0;
+  if ((son = malloc(sizeof(t_ptr))) == 0)
+    return ;
+  my_memset(son, 0, sizeof(t_ptr));
+  son->father = new;
+  son->index_map = pos;
+  new->chained_ptr = son;
+  temp = (champ) ? champ : new;
+  while (temp->next != NULL)
+    temp = temp->next;
+  champ = (temp == new) ? new : champ;
+  champ->next = (temp == new) ? 0 : new;
+  return (champ);  
+}
+
+void		load_champ(t_champ *champ, t_map *arena, t_cmd *cmd)
 {
   t_header	header;
-  t_champ	*champ;
+  int		fd;
 
-  if (fd <= 0)
+  if ((fd = open(cmd->prog_name, O_RDONLY)) <= 0)
     return (0);
   if (read(fd, &header, sizeof(t_header)) != sizeof(header))
     return (0);
   if ((check_magic(&header.magic)) == 84)
     return (84);
-  add_champ(arena, my_strdup(header.prog_name), rank);
+  champ = add_champ(&header, add_cmap(arena, champ, cmd, fd), champ, cmd);
+  return (champ)
 }

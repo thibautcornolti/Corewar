@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 18:18:05 2017 Thibaut Cornolti
+** Last update Thu Mar 30 21:11:24 2017 Bastien
 */
 
 #ifndef VM_H_
@@ -36,13 +36,14 @@ typedef struct	s_ptr
   struct s_ptr	*next;
 }		t_ptr;
 
-typedef struct	s_champ
+typedef struct		s_champ
 {
-  char		*name;
-  char		*comment;
-  t_ptr		*chained_ptr;
-  int		reg[REG_SIZE];
-}		t_champ;
+  char			*name;
+  char			*comment;
+  t_ptr			*chained_ptr;
+  int			reg[REG_SIZE];
+  static s_champ	*next;
+}			t_champ;
 
 typedef struct	s_arg
 {
@@ -55,6 +56,12 @@ typedef struct	s_inst
   char		inst;
   t_arg		arg[3];
 }		t_inst;
+
+typedef struct	s_map
+{
+  char	arena[MEM_SIZE + 1];
+  char	color[MEM_SIZE + 1];
+}		t_map;
 
 typedef struct	s_header
 {
