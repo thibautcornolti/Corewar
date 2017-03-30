@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 16:42:48 2017 Thibaut Cornolti
+** Last update Thu Mar 30 16:45:32 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -32,7 +32,7 @@ typedef struct	s_inst
 {
   char		inst;
   t_arg		arg[3];
-}		t_data;
+}		t_inst;
 
 typedef struct	s_arg
 {
