@@ -5,11 +5,10 @@
 ** Login   <thibrex@epitech.net>
 ** 
 ** Started on  Mon Oct 10 09:42:17 2016 Cornolti Thibaut
-** Last update Mon Oct 10 16:49:33 2016 Cornolti Thibaut
+** Last update Thu Mar 30 17:36:54 2017 Thibaut Cornolti
 */
-char	*my_strncpy(char *dest, char *src, int n);
 
-char	*my_strncpy(char *dest, char *src, int n)
+char	*my_strncpy(char *dest, const char *src, int n)
 {
   int	i;
 

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Wed Mar 29 15:28:21 2017 Thibaut Cornolti
+** Last update Thu Mar 30 17:45:23 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
@@ -23,11 +23,11 @@ char		*skip_comm(int fd)
 
 char		type_to_binary(char type)
 {
-  const char	types[4] = {T_REG, T_DIR, T_IND};
+  const char	types[3] = {T_REG, T_DIR, T_IND};
   int		i;
 
   i = -1;
-  while (++i < 4)
+  while (++i < 3)
     if (types[i] == type)
       return (i + 1);
   return (0);

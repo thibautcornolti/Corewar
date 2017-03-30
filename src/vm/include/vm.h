@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 16:56:52 2017 Thibaut Cornolti
+** Last update Thu Mar 30 18:18:05 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -22,11 +22,27 @@
 # define NAME_LENGTH            128
 # define COMMENT_LENGTH         2048
 
-typedef struct	s_lchamp
+# define T_REG			1
+# define T_DIR			2
+# define T_IND			4
+
+typedef struct	s_ptr
+{
+  t_champ	*father;
+  char		carry;
+  int		live;
+  int		cycle;
+  int		index_map;
+  struct s_ptr	*next;
+}		t_ptr;
+
+typedef struct	s_champ
 {
   char		*name;
   char		*comment;
-}		t_lchamp;
+  t_ptr		*chained_ptr;
+  int		reg[REG_SIZE];
+}		t_champ;
 
 typedef struct	s_arg
 {
@@ -47,5 +63,10 @@ typedef struct	s_header
   int           prog_size;
   char          comment[COMMENT_LENGTH + 1];
 }		t_header;
+
+int		binary_to_type(char);
+int		type_to_size(char, char);
+void		*endian(void *, int);
+void		my_memncpy(void *, void *, int);
 
 #endif	/* !VM_H_ */

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Oct 13 09:49:36 2016 Thibaut Cornolti
-** Last update Tue Mar 21 10:15:22 2017 Thibaut Cornolti
+** Last update Thu Mar 30 17:37:50 2017 Thibaut Cornolti
 */
 #ifndef MY_H_
 # define MY_H_
@@ -28,7 +28,7 @@ int	my_square_root(int);
 int	my_is_prime(int);
 int	my_find_prime_sup(int);
 char	*my_strcpy(char *, char *);
-char	*my_strncpy(char *, char *, int);
+char	*my_strncpy(char *, const char *, int);
 char	*my_revstr(char *);
 char	*my_strstr(char *, char *);
 int	my_strcmp(char *, char *);

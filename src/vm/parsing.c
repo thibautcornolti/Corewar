@@ -5,20 +5,21 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 11:06:17 2017 Luc
-** Last update Thu Mar 30 16:05:28 2017 Luc
+** Last update Thu Mar 30 18:42:26 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "map.h"
+#include "pars.h"
+#include "vm.h"
 #include "my.h"
 
-int		add_to_list(t_champ **champ,
+static int	add_to_list(t_cmd **champ,
 			    int prog_number, int load_adress,
 			    char *prog_name)
 {
-  t_champ	*tmp;
-  t_champ	*element;
+  t_cmd		*tmp;
+  t_cmd		*element;
 
   if ((element = malloc(sizeof(*element))) == NULL)
     return (84);
@@ -57,7 +58,7 @@ int		get_info_champ(char **argv, int *i, int *adress, int *num)
   return (0);
 }
 
-int		get_champion(t_champ **champ, char **argv)
+int		get_champion(t_cmd **champ, char **argv)
 {
   int		i;
   char		*name;
@@ -73,7 +74,7 @@ int		get_champion(t_champ **champ, char **argv)
     {
       if ((get_info_champ(argv, &i, &adress, &num)) == 84)
 	return (84);
-      if (name != 0 && adress != 0)
+      if (my_strcmp(argv[i], "-a") == 1 && my_strcmp(argv[i], "-n") == 1)
       	{
 	  name = argv[i];
       	  add_to_list(champ, num, adress, name);
@@ -85,7 +86,7 @@ int		get_champion(t_champ **champ, char **argv)
 
 int		main(int argc, char **argv)
 {
-  t_champ	*champion;
+  t_cmd		*champion;
 
   champion = NULL;
   if (argc < 4)
