@@ -5,12 +5,11 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 11:06:17 2017 Luc
-** Last update Thu Mar 30 18:42:26 2017 Thibaut Cornolti
+** Last update Thu Mar 30 19:06:43 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "pars.h"
 #include "vm.h"
 #include "my.h"
 
@@ -39,7 +38,7 @@ static int	add_to_list(t_cmd **champ,
   return (0);
 }
 
-int		get_info_champ(char **argv, int *i, int *adress, int *num)
+static int	get_info_champ(char **argv, int *i, int *adress, int *num)
 {
   if (my_strcmp(argv[*i], "-n") == 0)
     {
@@ -58,7 +57,7 @@ int		get_info_champ(char **argv, int *i, int *adress, int *num)
   return (0);
 }
 
-int		get_champion(t_cmd **champ, char **argv)
+int		pars_cmd(t_cmd **champ, char **argv)
 {
   int		i;
   char		*name;
@@ -82,16 +81,4 @@ int		get_champion(t_cmd **champ, char **argv)
       	}
     }
   return (0);
-}
-
-int		main(int argc, char **argv)
-{
-  t_cmd		*champion;
-
-  champion = NULL;
-  if (argc < 4)
-    return (84);
-  else
-    if ((get_champion(&champion, argv)) == 84)
-      return (84);
 }
