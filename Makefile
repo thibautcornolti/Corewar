@@ -5,10 +5,10 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Thu Mar 30 09:28:59 2017 Thibaut Cornolti
-## Last update Thu Mar 30 10:15:57 2017 Thibaut Cornolti
+## Last update Thu Mar 30 10:16:35 2017 Thibaut Cornolti
 ##
 
-ASM_SRC	=	src/asm/
+ASM_SRC	=	src/asmb/
 
 VM_SRC	=	src/vm/
 
