@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 14:19:52 2017 Luc
-** Last update Thu Mar 23 23:27:40 2017 Romain LANCIA
+** Last update Thu Mar 30 09:16:19 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -51,8 +51,10 @@ int		pre_start_header(int fd_s, t_header *header)
 {
   char		*file[2];
 
-  file[0] = my_epure_str(skip_comm(fd_s));
-  file[1] = my_epure_str(skip_comm(fd_s));
+  if ((file[0] = my_epure_str(skip_comm(fd_s))) == NULL)
+    return (84);
+  if ((file[1] = my_epure_str(skip_comm(fd_s))) == NULL)
+    return (84);
   if (start_header(file, header) == 84)
     return (84);
   return (0);

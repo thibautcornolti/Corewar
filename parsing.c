@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Tue Mar 28 10:39:44 2017 Luc
+** Last update Thu Mar 30 09:14:32 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -104,6 +104,8 @@ char		*get_file(char *path)
 
 int		make_header(char *file[2], t_header *header)
 {
+  if (!file || !header)
+    return (84);
   if ((my_strncmp(file[0], NAME_STRING, 5)) == 1)
     return (84);
   header->magic = MAGIC;

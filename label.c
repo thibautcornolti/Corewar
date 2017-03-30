@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Sun Mar 26 15:14:06 2017 Bastien
-** Last update Wed Mar 29 19:33:21 2017 Thibaut Cornolti
+** Last update Thu Mar 30 09:14:52 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -109,5 +109,4 @@ void		decrease_label_all(t_label *babybel, t_data *data)
       babybel = babybel->next;
       babybel->lpos += size;
     }
-  dprintf(2, "all increased: %d\n", size);
 }

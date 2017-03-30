@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Wed Mar 29 19:33:31 2017 Thibaut Cornolti
+** Last update Thu Mar 30 09:15:00 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -53,14 +53,8 @@ int		fill_label(char *name, int fd_s, t_label **babybel)
   if (pre_start_header(fd_s, &header) == 84)
     return (84);
   while ((line = skip_comm(fd_s)))
-    {
-      if ((get_info_line(my_epure_str(line), &list, babybel, 1)) == 84)
-	return (84);
-      if (*babybel)
-	dprintf(2, "%s: %d\n", (*babybel)->lname, (*babybel)->lpos);
-      else
-	dprintf(2, "null: 0\n");
-    }
+    if ((get_info_line(my_epure_str(line), &list, babybel, 1)) == 84)
+      return (84);
   header.prog_size = get_prog_size(list);
   decrease_label_all(*babybel, list);
   close(fd_cor);
