@@ -1,49 +1,37 @@
 ##
-## Makefile for Makefile in /home/thibrex/delivery/CPool_Day10/do-op
+## Makefile for Makefile in /home/thibrex/Dropbox/delivery/CPE/CPE_2016_corewar
 ## 
 ## Made by Thibaut Cornolti
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
-## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Sun Mar 26 18:57:02 2017 Thibaut Cornolti
+## Started on  Thu Mar 30 09:28:59 2017 Thibaut Cornolti
+## Last update Thu Mar 30 09:34:43 2017 Thibaut Cornolti
 ##
 
-SRC	=	asm.c			\
-		endian.c		\
-		instruction.c		\
-		utils.c			\
-		header.c		\
-		parsing.c		\
-		size.c			\
-		parsing_reading_info.c	\
-		label.c			\
-		verify_type_arg.c	\
-		writer.c		\
+ASM_SRC	=	src/asm/
 
-OBJS	=	$(SRCS:.c=.o)
+VM_SRC	=	src/vm/
 
-NAME	=	asm
+all:	asm vm
 
-CC	=	gcc -g
+asm:
+	cd $(ASM_SRC) && make
+	mv $(ASM_SRC)/asm .
 
-HEADER	=	include/
-
-RM	=	rm -f
-
-LIB_P	=	-Llib/my
-
-LIB	=	-lmy
-
-all:	$(NAME)
-
-$(NAME):
-	cd lib/my/ && make
-	$(CC) -o $(NAME) -I$(HEADER) $(SRC) $(LIB_P) $(LIB) -Wall -Wextra -pedantic
+vm:
+	cd $(VM_SRC) && make
+	mv $(VM_SRC)/corewar .
 
 clean:
-	$(RM) $(OBJS)
+	cd $(ASM_SRC) && make clean
+	cd $(VM_SRC) && make clean
 
-fclean:	clean
-	$(RM) $(NAME)
+fclean:
+	cd $(ASM_SRC) && make fclean
+	cd $(VM_SRC) && make fclean
 
-re:	fclean all
+re:
+	cd $(ASM_SRC) && make re
+	mv $(ASM_SRC)/asm .
+	cd $(VM_SRC) && make re
+	mv $(VM_SRC)/corewar .
