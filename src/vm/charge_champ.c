@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Thu Mar 30 21:11:58 2017 Bastien
+** Last update Thu Mar 30 21:15:16 2017 Bastien
 */
 
 #include "vm.h"
@@ -58,7 +58,7 @@ void		add_champ(t_header *header, int pos, t_champ *champ, t_cmd *cmd)
     temp = temp->next;
   champ = (temp == new) ? new : champ;
   champ->next = (temp == new) ? 0 : new;
-  return (champ);  
+  return (champ);
 }
 
 void		load_champ(t_champ *champ, t_map *arena, t_cmd *cmd)
