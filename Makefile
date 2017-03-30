@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Thu Mar 30 09:28:59 2017 Thibaut Cornolti
-## Last update Thu Mar 30 10:16:35 2017 Thibaut Cornolti
+## Last update Thu Mar 30 10:41:09 2017 Thibaut Cornolti
 ##
 
 ASM_SRC	=	src/asmb/
@@ -16,7 +16,7 @@ all:	asm #vm
 
 asm:
 	cd $(ASM_SRC) && make
-	mv $(ASM_SRC)/asm .
+	mv $(ASM_SRC)/asm asm/
 
 vm:
 	cd $(VM_SRC) && make
@@ -32,6 +32,6 @@ fclean:
 
 re:
 	cd $(ASM_SRC) && make re
-	mv $(ASM_SRC)/asm .
+	mv $(ASM_SRC)/asm asm/
 	#cd $(VM_SRC) && make re
 	#mv $(VM_SRC)/corewar .
