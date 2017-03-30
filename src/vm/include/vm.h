@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 11:06:37 2017 Bastien
+** Last update Thu Mar 30 11:07:24 2017 Bastien
 */
 
 #ifndef VM_H_
@@ -19,10 +19,10 @@
 # define DIR_SIZE		4
 # define REG_SIZE		DIR_SIZE
 
-typedef struct	t_lchamp
+typedef struct	s_lchamp
 {
   char	*name;
   char	*comment;
-}
+}		t_lchamp;
 
 #endif	/* !VM_H_ */
