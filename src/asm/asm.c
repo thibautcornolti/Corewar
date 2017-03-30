@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:23:57 2017 Thibaut Cornolti
-** Last update Thu Mar 30 09:40:14 2017 Thibaut Cornolti
+** Last update Thu Mar 30 10:13:46 2017 Thibaut Cornolti
 */
 
 #include <sys/types.h>
@@ -33,10 +33,13 @@ int		start_asm(char *name, int fd_s, t_label **babybel)
 	return (84);
     }
   header.prog_size = get_prog_size(list);
+  if ((check_inst(list)) == 84)
+    return (84);
   if ((fd_cor = get_fd_cor(name)) <= 0)
     return (84);
   write_header(fd_cor, &header);
-  write_data(fd_cor, list);
+  if (write_data(fd_cor, list) == 84)
+    return (84);
   close(fd_cor);
   return (0);
 }

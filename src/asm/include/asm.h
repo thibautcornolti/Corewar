@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar  3 13:25:17 2017 Thibaut Cornolti
-** Last update Wed Mar 29 15:29:00 2017 Thibaut Cornolti
+** Last update Thu Mar 30 10:12:27 2017 Thibaut Cornolti
 */
 
 #ifndef ASM_H_
@@ -80,6 +80,7 @@ int		get_label_pos(char *, t_label *);
 int		get_type_size(char, t_data *);
 void		decrease_label(t_label *, t_data *);
 void		decrease_label_all(t_label *, t_data *);
-void		write_data(int, t_data *);
+int		write_data(int, t_data *);
+int		check_inst(t_data *);
 
 #endif /* !ASM_H_ */

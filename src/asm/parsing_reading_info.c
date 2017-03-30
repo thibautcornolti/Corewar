@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 20 13:55:43 2017 Romain LANCIA
-** Last update Thu Mar 30 09:22:20 2017 Thibaut Cornolti
+** Last update Thu Mar 30 10:04:55 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -74,8 +74,8 @@ static int	check_label(char *lname, t_label **babybel, int fill)
       else if ((label(my_strdup(lname), babybel)) == 84)
 	{
 	  my_puterror(lname);
-	  exit(0 + my_puterror(": Multiple definition \
-of the same label.\n"));
+	  my_puterror(": Multiple definition of the same label.\n");
+	  exit(0);
 	}
       else
 	return (1);
@@ -99,7 +99,7 @@ int		get_info_line(char *line, t_data **list,
   tab += check_label(tab[0], babybel, fill);
   if (!*tab)
     return (0);
-  while (tab[i] != NULL)
+  while (tab[i] != NULL && i <= 3)
     {
       arg[i - 1].type = verify_type_arg(tab[i], &t, *babybel);
       arg[i - 1].arg = t;
