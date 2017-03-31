@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 19:03:03 2017 Thibaut Cornolti
-** Last update Fri Mar 31 13:45:42 2017 Thibaut Cornolti
+** Last update Fri Mar 31 14:44:37 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -67,8 +67,6 @@ int		main(int ac, char **av)
       champ = load_champ(champ, &arena, champ_cmd);
       champ_cmd = champ_cmd->next;
     }
-  dprintf(2, "2:%d\n", champ->chained_ptr->index_map);
-  write(1, arena.arena + champ->next->chained_ptr->index_map, 50);
   start_vm(&arena, champ);
   return (0);
 }
