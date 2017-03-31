@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 17:49:39 2017 Thibaut Cornolti
-** Last update Fri Mar 31 17:58:16 2017 Thibaut Cornolti
+** Last update Fri Mar 31 18:02:05 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -17,7 +17,7 @@ int		get_arg_value(t_arg *arg, t_ptr *ptr, t_map *map)
   if (arg->type == T_REG)
     {
       if (arg->arg >= 16)
-	return (84);
+	return (0);
       res = ptr->father->reg[arg->arg - 1];
     }
   else if (arg->type == T_DIR)
