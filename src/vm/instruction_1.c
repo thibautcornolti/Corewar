@@ -5,15 +5,29 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 14:51:22 2017 Thibaut Cornolti
+** Last update Fri Mar 31 15:52:13 2017 Bastien
 */
 
 #include "vm.h"
 
-int	live(t_inst *inst, t_ptr *ptr, t_map *map)
+int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  t_champ	*temp;
   if (inst->inst != 0x01)
     return (84);
+  temp = ptr->father;
+  while (temp->prev)
+    temp = temp->prev;
+  while (temp->next && temp->reg[0] != inst->arg[0].arg)
+    temp = temp->next;
+  if (!temp->next && temp->reg[0] != inst->arg[0].arg)
+    return (84);
+  temp->live = 0;
+  write(1, "The player ", 11);
+  my_put_nbr(inst->arg[0].arg);
+  write(1, "(", 1);
+  write(1, ptr->father->name, my_strlen(ptr->father->name));
+  write(1, ") is alive.\n", 13);
   return (0);
 }
 
@@ -23,6 +37,9 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 
   if (inst->inst != 0x02)
     return (84);
+  if (!inst->arg[1].arg)
+    return (84);
+  
   return (0);
 }
 
