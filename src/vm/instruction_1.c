@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 17:37:33 2017 Bastien
+** Last update Fri Mar 31 18:44:57 2017 Bastien
 */
 
 #include <unistd.h>
@@ -17,7 +17,7 @@ int		live(t_inst *inst, t_ptr *ptr, t_map *map)
   t_champ	*temp;
   
   (void)map;
-  if (inst->inst != 0x01)
+  if (inst->inst != 0x01 || !(T_DIR & inst->arg[0].type))
     return (84);
   temp = ptr->father;
   while (temp->prev)
@@ -38,10 +38,17 @@ int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   (void)ptr;(void)map;
-  if (inst->inst != 0x02 || !inst->arg[1].arg || inst->arg[0].arg > REG_NUMBER)
+  if (inst->inst != 0x02 || !(T_REG & inst->arg[1].type) ||
+      !(inst->arg[1].arg - 1) || inst->arg[1].arg - 1 > REG_NUMBER)
     return (84);
-  ptr->father->reg[inst->arg[1].arg - 1] =
-    (int)my_strncpy(ptr->father->reg[0] + inst->arg[0].arg%IDX_MOD, 4);
+  if (inst->arg[0].type & T_IND)
+    ptr->father->reg[inst->arg[1].arg - 1] =
+      (int)my_strndup(map + (ptr->father->reg[0] + inst->arg[0].arg%IDX_MOD)%MEM_SIZE, 4);
+  else if (inst->arg[0].type & T_DIR)
+    ptr->father->reg[inst->arg[1].arg - 1] =
+      (int)my_strndup(map + inst->arg[0].arg%MEM_SIZE, 4);
+  else
+    return (84);
   ptr->carry = (ptr->father->reg[inst->arg[1].arg - 1]) ? 0 : 1;
   return (0);
 }
@@ -57,15 +64,27 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 int	add(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   (void)ptr;(void)map;
-  if (inst->inst != 0x04)
+  if (inst->inst != 0x04 || !(inst->arg[0].type & T_REG) || !(inst->arg[1].type & T_REG) ||
+      !(inst->arg[2].type & T_REG) || !(inst->arg[2].arg - 1) ||
+      inst->arg[0].arg - 1 > REG_NUMBER || inst->arg[1].arg - 1 > REG_NUMBER ||
+      inst->arg[2].arg - 1 > REG_NUMBER)
     return (84);
+  ptr->father->reg[inst->arg[2].arg - 1] = ptr->father->reg[inst->arg[0].arg - 1]
+    + ptr->father->reg[inst->arg[1].arg - 1];
+  ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);
 }
 
 int	sub(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   (void)ptr;(void)map;
-  if (inst->inst != 0x05)
+  if (inst->inst != 0x05 || !(inst->arg[0].type & T_REG) || !(inst->arg[1].type & T_REG) ||
+      !(inst->arg[2].type & T_REG) || !(inst->arg[2].arg - 1) ||
+      inst->arg[0].arg - 1 > REG_NUMBER || inst->arg[1].arg - 1 > REG_NUMBER ||
+      inst->arg[2].arg - 1 > REG_NUMBER)
     return (84);
+  ptr->father->reg[inst->arg[2].arg - 1] = ptr->father->reg[inst->arg[0].arg - 1]
+    - ptr->father->reg[inst->arg[1].arg - 1];
+  ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);
 }
