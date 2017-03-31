@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 16:08:18 2017 Bastien
+** Last update Fri Mar 31 17:37:33 2017 Bastien
 */
 
 #include <unistd.h>
@@ -40,7 +40,9 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
   (void)ptr;(void)map;
   if (inst->inst != 0x02 || !inst->arg[1].arg || inst->arg[0].arg > REG_NUMBER)
     return (84);
-  ptr->father->reg[inst->arg[1].arg - 1] = inst->arg[0].arg;
+  ptr->father->reg[inst->arg[1].arg - 1] =
+    (int)my_strncpy(ptr->father->reg[0] + inst->arg[0].arg%IDX_MOD, 4);
+  ptr->carry = (ptr->father->reg[inst->arg[1].arg - 1]) ? 0 : 1;
   return (0);
 }
 
