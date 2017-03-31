@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 15:52:13 2017 Bastien
+** Last update Fri Mar 31 15:55:24 2017 Bastien
 */
 
 #include "vm.h"
@@ -13,6 +13,8 @@
 int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   t_champ	*temp;
+  
+  (void)map;
   if (inst->inst != 0x01)
     return (84);
   temp = ptr->father;
@@ -35,9 +37,8 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   int	registre;
 
-  if (inst->inst != 0x02)
-    return (84);
-  if (!inst->arg[1].arg)
+  (void)ptr;(void)map;
+  if (inst->inst != 0x02 || !inst->arg[1].arg)
     return (84);
   
   return (0);
@@ -45,6 +46,7 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  (void)ptr;(void)map;
   if (inst->inst != 0x03)
     return (84);
   return (0);
@@ -52,6 +54,7 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	add(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  (void)ptr;(void)map;
   if (inst->inst != 0x04)
     return (84);
   return (0);
@@ -59,6 +62,7 @@ int	add(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	sub(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  (void)ptr;(void)map;
   if (inst->inst != 0x05)
     return (84);
   return (0);
