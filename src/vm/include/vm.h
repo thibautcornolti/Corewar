@@ -1,11 +1,11 @@
 /*
-1;2802;0c** vm.h for vm in /home/rectoria/delivery/Projets/CPE_2016_corewar/src/vm
+** vm.h for vm in /home/rectoria/delivery/Projets/CPE_2016_corewar/src/vm
 ** 
 ** Made by Bastien
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Fri Mar 31 15:52:01 2017 Thibaut Cornolti
+** Last update Fri Mar 31 16:15:25 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -96,5 +96,7 @@ int		        get_nbr_live(t_champ *);
 int			pars_cmd(t_cmd **, char **);
 t_champ			*load_champ(t_champ *, t_map *, t_cmd *);
 int			translate(t_ptr *, t_map *);
+void			fill_arg_live(t_inst *, t_map *, t_ptr *);
+void			redirect_inst(t_inst *, t_map *, t_ptr *);
 
 #endif	/* !VM_H_ */

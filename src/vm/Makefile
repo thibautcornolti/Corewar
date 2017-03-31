@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Fri Mar 31 14:56:43 2017 Thibaut Cornolti
+## Last update Fri Mar 31 16:05:19 2017 Thibaut Cornolti
 ##
 
 SRC	=	parsing.c			\
@@ -13,6 +13,7 @@ SRC	=	parsing.c			\
 		charge_champ.c			\
 		endian.c			\
 		google_translate.c		\
+		bing_translate.c		\
 		utils_translate.c		\
 		vm.c				\
 		instruction_1.c			\

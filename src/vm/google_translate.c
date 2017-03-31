@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Fri Mar 31 15:58:42 2017 Thibaut Cornolti
+** Last update Fri Mar 31 16:15:56 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -62,7 +62,9 @@ int		translate(t_ptr *ptr, t_map *map)
   inst.inst = map->arena[PTR_INDEX];
   printf("Champion:%d, inst:%x, pos:%d\n", ptr->father->reg[0], inst.inst, PTR_INDEX);
   ptr->index_map += 1;
-  if (!(inst.inst == 1 || inst.inst == 9 ||
+  if (inst.inst == 1)
+    fill_arg_live(&inst, map, ptr);
+  else if (!(inst.inst == 9 ||
 	inst.inst == 12 || inst.inst == 15))
     {
       ptr->index_map += set_type(&inst, map->arena[PTR_INDEX]);
@@ -71,5 +73,6 @@ int		translate(t_ptr *ptr, t_map *map)
   else
     exit(my_puterror("non géré\n"));
   ptr->cycle = inst_to_time(inst.inst);
+  redirect_inst(&inst, map, ptr);
   return (0);
 }
