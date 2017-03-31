@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Fri Mar 31 14:56:33 2017 Thibaut Cornolti
+** Last update Fri Mar 31 15:53:54 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -14,5 +14,6 @@ int	aff(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   if (inst->inst != 0x10)
     return (84);
+  (void)ptr;(void)map;
   return (0);
 }

@@ -1,11 +1,11 @@
 /*
-** vm.h for vm in /home/rectoria/delivery/Projets/CPE_2016_corewar/src/vm
+1;2802;0c** vm.h for vm in /home/rectoria/delivery/Projets/CPE_2016_corewar/src/vm
 ** 
 ** Made by Bastien
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Fri Mar 31 14:57:21 2017 Bastien
+** Last update Fri Mar 31 15:52:01 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -37,7 +37,6 @@ typedef struct		s_ptr
 {
   t_champ		*father;
   char			carry;
-  int			live;
   int			cycle;
   int			index_map;
   struct s_ptr		*next;
@@ -48,6 +47,7 @@ typedef struct		s_champ
   char			*name;
   char			*comment;
   t_ptr			*chained_ptr;
+  int			live;
   int			reg[REG_SIZE];
   struct s_champ	*next;
   struct s_champ	*prev;
