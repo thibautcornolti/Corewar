@@ -5,10 +5,12 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 16:02:45 2017 Bastien
+** Last update Fri Mar 31 16:04:19 2017 Bastien
 */
 
+#include <unistd.h>
 #include "vm.h"
+#include "my.h"
 
 int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 {
@@ -35,8 +37,6 @@ int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  int	registre;
-
   (void)ptr;(void)map;
   if (inst->inst != 0x02 || !inst->arg[1].arg || inst->arg[0].arg > REG_NUMBER)
     return (84);
