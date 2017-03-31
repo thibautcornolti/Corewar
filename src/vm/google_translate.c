@@ -5,11 +5,14 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Fri Mar 31 15:46:54 2017 Thibaut Cornolti
+** Last update Fri Mar 31 15:58:42 2017 Thibaut Cornolti
 */
+
+#include <stdio.h>
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "vm.h"
 #include "my.h"
 
@@ -51,7 +54,7 @@ int		translate(t_ptr *ptr, t_map *map)
 
   if (map->arena[PTR_INDEX] == 0)
     {
-      ptr->live += 1;
+      ptr->father->live += 1;
       ptr->index_map += 1;
       return (0);
     }

@@ -5,8 +5,10 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 19:03:03 2017 Thibaut Cornolti
-** Last update Fri Mar 31 15:20:25 2017 Thibaut Cornolti
+** Last update Fri Mar 31 15:59:35 2017 Thibaut Cornolti
 */
+
+#include <stdio.h>
 
 #include <unistd.h>
 #include "my.h"
@@ -21,21 +23,17 @@ static void	do_inst(t_map *map, t_champ *champ)
       ptr = champ->chained_ptr;
       while (ptr)
 	{
-	  if (ptr->live < CYCLE_TO_DIE)
+	  if (ptr->father->live < CYCLE_TO_DIE)
 	    {
-	      if (map->arena[ptr->index_map % MEM_SIZE] == 0 || ptr->cycle)
-		{
-		  ptr->live += 1;
-		  ptr->index_map += 1;
-		  if (ptr->cycle)
-		    ptr->cycle -= 1;
-		  continue ;
-		}
+	      if (map->arena[ptr->index_map % MEM_SIZE] == 0);
+	      else if (ptr->cycle)
+		ptr->cycle -= 1;
 	      else
 		translate(ptr, map);
 	    }
 	  ptr = ptr->next;
 	}
+      champ->live += 1;
       champ = champ->next;
     }
 }
