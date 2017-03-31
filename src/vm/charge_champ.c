@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Fri Mar 31 13:54:29 2017 Bastien
+** Last update Fri Mar 31 14:56:45 2017 Bastien
 */
 
 #include <unistd.h>
@@ -61,6 +61,7 @@ t_champ		*add_champ(t_header *header, int pos, t_champ *champ, t_cmd *cmd)
     temp = temp->next;
   champ = (temp == new) ? new : champ;
   champ->next = (temp == new) ? 0 : new;
+  new->prev = champ;
   return (champ);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Fri Mar 31 14:57:21 2017 Bastien
+** Last update Fri Mar 31 13:08:14 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -50,7 +50,7 @@ typedef struct		s_champ
   t_ptr			*chained_ptr;
   int			reg[REG_SIZE];
   struct s_champ	*next;
-  struct s_champ	*prev;
+  struct
 }			t_champ;
 
 typedef struct		s_arg
