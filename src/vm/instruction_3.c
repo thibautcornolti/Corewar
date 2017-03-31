@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Fri Mar 31 15:54:11 2017 Thibaut Cornolti
+** Last update Fri Mar 31 16:03:33 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -18,7 +18,7 @@ int	sti(t_inst *inst, t_ptr *ptr, t_map *map)
   return (0);
 }
 
-int	fork(t_inst *inst, t_ptr *ptr, t_map *map)
+int	ifork(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   if (inst->inst != 0x0c)
     return (84);
