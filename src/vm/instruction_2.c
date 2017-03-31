@@ -5,13 +5,16 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:08:53 2017 Luc
-** Last update Fri Mar 31 18:37:47 2017 Thibaut Cornolti
+** Last update Fri Mar 31 18:51:24 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
 
 int	and(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  int	a;
+  int	b;
+
   if (inst->inst != 0x06)
     return (84);
   if (!(inst->arg[0].type & (T_REG | T_DIR | T_IND)) ||
@@ -49,6 +52,9 @@ int	or(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	xor(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  int	a;
+  int	b;
+
   if (inst->inst != 0x08)
     return (84);
   if (!(inst->arg[0].type & (T_REG | T_DIR | T_IND)) ||
