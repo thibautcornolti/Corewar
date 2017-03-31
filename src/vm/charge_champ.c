@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Fri Mar 31 13:48:11 2017 Bastien
+** Last update Fri Mar 31 13:49:19 2017 Bastien
 */
 
 #include <unistd.h>
@@ -28,7 +28,7 @@ int		add_cmap(t_map *arena, t_cmd *cmd, int fd)
   char		c;
   int		j;
 
-  j = i;
+  j = i + 1;
   while (++i < MEM_SIZE && read(fd, &c, 1))
     {
       arena->arena[i] = c;
