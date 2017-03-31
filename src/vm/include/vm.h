@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Fri Mar 31 17:54:21 2017 Thibaut Cornolti
+** Last update Fri Mar 31 19:22:23 2017 Bastien
 */
 
 #ifndef VM_H_
@@ -46,6 +46,7 @@ typedef struct		s_champ
 {
   char			*name;
   char			*comment;
+  int			color;
   t_ptr			*chained_ptr;
   int			live;
   int			reg[REG_SIZE];

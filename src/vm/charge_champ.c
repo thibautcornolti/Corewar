@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Fri Mar 31 17:35:15 2017 Bastien
+** Last update Fri Mar 31 19:24:27 2017 Bastien
 */
 
 #include <unistd.h>
@@ -49,6 +49,7 @@ t_champ		*add_champ(t_header *header, int pos, t_champ *champ, t_cmd *cmd)
   new->name = my_strdup(header->prog_name);
   new->comment = my_strdup(header->comment);
   new->reg[0] = cmd->prog_number;
+  new->color = cmd->prog_number;
   new->next = 0;
   if ((son = malloc(sizeof(t_ptr))) == NULL)
     return (NULL);
