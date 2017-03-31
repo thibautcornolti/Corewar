@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Fri Mar 31 14:51:42 2017 Thibaut Cornolti
+## Last update Fri Mar 31 14:56:43 2017 Thibaut Cornolti
 ##
 
 SRC	=	parsing.c			\
@@ -18,6 +18,7 @@ SRC	=	parsing.c			\
 		instruction_1.c			\
 		instruction_2.c			\
 		instruction_3.c			\
+		instruction_4.c			\
 
 OBJS	=	$(SRCS:.c=.o)
 
