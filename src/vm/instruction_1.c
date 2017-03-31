@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 15:55:24 2017 Bastien
+** Last update Fri Mar 31 16:02:45 2017 Bastien
 */
 
 #include "vm.h"
@@ -38,9 +38,9 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
   int	registre;
 
   (void)ptr;(void)map;
-  if (inst->inst != 0x02 || !inst->arg[1].arg)
+  if (inst->inst != 0x02 || !inst->arg[1].arg || inst->arg[0].arg > REG_NUMBER)
     return (84);
-  
+  ptr->father->reg[inst->arg[1].arg - 1] = inst->arg[0].arg;
   return (0);
 }
 
