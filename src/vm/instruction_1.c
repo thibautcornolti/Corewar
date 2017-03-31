@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 18:44:57 2017 Bastien
+** Last update Fri Mar 31 18:50:36 2017 Bastien
 */
 
 #include <unistd.h>
@@ -42,11 +42,11 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
       !(inst->arg[1].arg - 1) || inst->arg[1].arg - 1 > REG_NUMBER)
     return (84);
   if (inst->arg[0].type & T_IND)
-    ptr->father->reg[inst->arg[1].arg - 1] =
-      (int)my_strndup(map + (ptr->father->reg[0] + inst->arg[0].arg%IDX_MOD)%MEM_SIZE, 4);
+    my_memcpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map +
+	      (ptr->father->reg[0] + inst->arg[0].arg%IDX_MOD) % MEM_SIZE, 4);
   else if (inst->arg[0].type & T_DIR)
-    ptr->father->reg[inst->arg[1].arg - 1] =
-      (int)my_strndup(map + inst->arg[0].arg%MEM_SIZE, 4);
+    my_memcpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map +
+	      inst->arg[0].arg % MEM_SIZE, 4);
   else
     return (84);
   ptr->carry = (ptr->father->reg[inst->arg[1].arg - 1]) ? 0 : 1;
