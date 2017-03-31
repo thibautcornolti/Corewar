@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Fri Mar 31 16:05:19 2017 Thibaut Cornolti
+## Last update Fri Mar 31 17:53:21 2017 Thibaut Cornolti
 ##
 
 SRC	=	parsing.c			\
@@ -16,6 +16,7 @@ SRC	=	parsing.c			\
 		bing_translate.c		\
 		utils_translate.c		\
 		vm.c				\
+		utils.c				\
 		instruction_1.c			\
 		instruction_2.c			\
 		instruction_3.c			\
