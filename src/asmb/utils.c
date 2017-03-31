@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Thu Mar 30 17:45:23 2017 Thibaut Cornolti
+** Last update Fri Mar 31 11:29:15 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
@@ -53,6 +53,7 @@ int		nbr_arg(char inst)
 {
   const char	args[17] = {0, 1, 2, 2, 3, 3, 3, 3, 3,
 			    1, 3, 3, 1, 2, 3, 1, 1};
+
   return (args[(int) inst]);
 }
 

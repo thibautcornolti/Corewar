@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Thu Mar 30 21:35:32 2017 Thibaut Cornolti
+** Last update Fri Mar 31 13:08:14 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -28,6 +28,8 @@
 # define T_REG			1
 # define T_DIR			2
 # define T_IND			4
+
+# define PTR_INDEX		ptr->index_map % MEM_SIZE
 
 typedef struct s_champ	t_champ;
 
@@ -64,8 +66,8 @@ typedef struct		s_inst
 
 typedef struct		s_map
 {
-  char			arena[MEM_SIZE + 1];
-  char			color[MEM_SIZE + 1];
+  char			arena[MEM_SIZE];
+  char			color[MEM_SIZE];
 }			t_map;
 
 typedef struct          s_cmd
@@ -86,10 +88,12 @@ typedef struct		s_header
 
 int			binary_to_type(char);
 int			type_to_size(char, char);
+int			inst_to_time(char);
 void			*endian(void *, int);
 void			my_memncpy(void *, void *, int);
-int			check_end(t_champ *);
+int		        get_nbr_live(t_champ *);
 int			pars_cmd(t_cmd **, char **);
 t_champ			*load_champ(t_champ *, t_map *, t_cmd *);
+int			translate(t_ptr *, t_map *);
 
 #endif	/* !VM_H_ */

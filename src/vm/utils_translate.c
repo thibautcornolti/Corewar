@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:01:59 2017 Thibaut Cornolti
-** Last update Thu Mar 30 17:50:00 2017 Thibaut Cornolti
+** Last update Fri Mar 31 11:32:05 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -35,6 +35,14 @@ int		binary_to_type(char code)
 	return (type[i]);
     }
   return (0);
+}
+
+int		inst_to_time(char inst)
+{
+  const int	time[17] = {0, 10, 5, 5, 10, 10, 6, 6, 6, 20,
+			    25, 25, 800, 10, 50, 1000, 2};
+
+  return (time[(int) inst]);
 }
 
 int		type_to_size(char inst, char type)

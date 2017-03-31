@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Thu Mar 30 21:38:40 2017 Thibaut Cornolti
+** Last update Fri Mar 31 13:44:30 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -24,7 +24,7 @@ int		check_magic(int *nbr)
 
 int		add_cmap(t_map *arena, t_cmd *cmd, int fd)
 {
-  static int	i = 0;
+  static int	i = -1;
   char		c;
   int		j;
 
