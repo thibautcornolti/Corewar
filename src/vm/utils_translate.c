@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:01:59 2017 Thibaut Cornolti
-** Last update Fri Mar 31 11:32:05 2017 Thibaut Cornolti
+** Last update Fri Mar 31 15:16:33 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -42,6 +42,8 @@ int		inst_to_time(char inst)
   const int	time[17] = {0, 10, 5, 5, 10, 10, 6, 6, 6, 20,
 			    25, 25, 800, 10, 50, 1000, 2};
 
+  if (inst > 16 || inst < 0)
+    return (0);
   return (time[(int) inst]);
 }
 

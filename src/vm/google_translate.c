@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Fri Mar 31 13:24:56 2017 Thibaut Cornolti
+** Last update Fri Mar 31 15:46:54 2017 Thibaut Cornolti
 */
 
 #include <fcntl.h>
@@ -40,8 +40,7 @@ static void	fill_arg(t_inst *inst, t_map *map, t_ptr *ptr)
 	  map->arena[(ptr->index_map + j) % MEM_SIZE];
       endian(&(inst->arg[i].arg), type_size);
       ptr->index_map += type_size;
-      if (ptr->father->reg[0] == 2)
-	dprintf(2, "arg %d:%d\n", i, inst->arg[i].arg);
+      dprintf(2, "arg %d:%d\n", i, inst->arg[i].arg);
     }
   dprintf(2, "\n");
 }
@@ -58,11 +57,16 @@ int		translate(t_ptr *ptr, t_map *map)
     }
   my_memset(&inst, 0, sizeof(t_inst));
   inst.inst = map->arena[PTR_INDEX];
+  printf("Champion:%d, inst:%x, pos:%d\n", ptr->father->reg[0], inst.inst, PTR_INDEX);
   ptr->index_map += 1;
   if (!(inst.inst == 1 || inst.inst == 9 ||
 	inst.inst == 12 || inst.inst == 15))
-    ptr->index_map += set_type(&inst, map->arena[PTR_INDEX]);
-  fill_arg(&inst, map, ptr);
+    {
+      ptr->index_map += set_type(&inst, map->arena[PTR_INDEX]);
+      fill_arg(&inst, map, ptr);
+    }
+  else
+    exit(my_puterror("non géré\n"));
   ptr->cycle = inst_to_time(inst.inst);
   return (0);
 }
