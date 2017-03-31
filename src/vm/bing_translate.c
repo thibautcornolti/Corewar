@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 16:05:10 2017 Thibaut Cornolti
-** Last update Fri Mar 31 16:15:02 2017 Thibaut Cornolti
+** Last update Fri Mar 31 19:01:23 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -26,6 +26,7 @@ void		fill_arg_live(t_inst *inst, t_map *map, t_ptr *ptr)
 
 void		redirect_inst(t_inst *inst, t_map *map, t_ptr *ptr)
 {
+  int		(*fct[16])(t_inst *, t_map *, t_ptr *);
   if (inst->inst == 0x01)
     live(inst, ptr, map);
 }
