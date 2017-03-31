@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Fri Mar 31 14:56:36 2017 Thibaut Cornolti
+** Last update Fri Mar 31 16:03:50 2017 Thibaut Cornolti
 */
 
 #ifndef INST_H_
@@ -22,7 +22,7 @@ int	xor(t_inst *, t_ptr *, t_map *);
 int	zjmp(t_inst *, t_ptr *, t_map *);
 int	ldi(t_inst *, t_ptr *, t_map *);
 int	sti(t_inst *, t_ptr *, t_map *);
-int	fork(t_inst *, t_ptr *, t_map *);
+int	ifork(t_inst *, t_ptr *, t_map *);
 int	lld(t_inst *, t_ptr *, t_map *);
 int	lldi(t_inst *, t_ptr *, t_map *);
 int	lfork(t_inst *, t_ptr *, t_map *);
