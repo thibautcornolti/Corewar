@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:08:53 2017 Luc
-** Last update Fri Mar 31 19:02:19 2017 Thibaut Cornolti
+** Last update Fri Mar 31 19:03:22 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -23,7 +23,7 @@ int	and(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   a = get_arg_value(&(inst->arg[0]), ptr, map);
   b = get_arg_value(&(inst->arg[0]), ptr, map);
-  if ((unsigned int) inst->arg[2].arg >= 16)
+  if ((unsigned int) inst->arg[2].arg >= REG_SIZE)
     return (0);
   ptr->father->reg[inst->arg[2].arg - 1] = a & b;
   ptr->carry = (a & b) ? 0 : 1;
@@ -43,7 +43,7 @@ int	or(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   a = get_arg_value(&(inst->arg[0]), ptr, map);
   b = get_arg_value(&(inst->arg[0]), ptr, map);
-  if ((unsigned int) inst->arg[2].arg >= 16)
+  if ((unsigned int) inst->arg[2].arg >= REG_SIZE)
     return (0);
   ptr->father->reg[inst->arg[2].arg - 1] = a | b;
   ptr->carry = (a | b) ? 0 : 1;
@@ -63,7 +63,7 @@ int	xor(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   a = get_arg_value(&(inst->arg[0]), ptr, map);
   b = get_arg_value(&(inst->arg[0]), ptr, map);
-  if ((unsigned int) inst->arg[2].arg >= 16)
+  if ((unsigned int) inst->arg[2].arg >= REG_SIZE)
     return (0);
   ptr->father->reg[inst->arg[2].arg - 1] = a ^ b;
   ptr->carry = (a ^ b) ? 0 : 1;
