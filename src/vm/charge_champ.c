@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Fri Mar 31 13:44:30 2017 Thibaut Cornolti
+** Last update Fri Mar 31 13:48:11 2017 Bastien
 */
 
 #include <unistd.h>
@@ -34,7 +34,6 @@ int		add_cmap(t_map *arena, t_cmd *cmd, int fd)
       arena->arena[i] = c;
       arena->color[i] = cmd->prog_number;
     }
-  i -= 1;
   return (j);
 }
 
