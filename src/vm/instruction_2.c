@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:08:53 2017 Luc
-** Last update Sat Apr  1 20:25:49 2017 Bastien
+** Last update Sat Apr  1 21:02:58 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -85,7 +85,7 @@ int	zjmp(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	ldi(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  int	nb;
+  short	nb;
 
   (void) map;
   if (inst->inst != 0x0a || inst->arg[1].type & T_IND ||
@@ -93,8 +93,8 @@ int	ldi(t_inst *inst, t_ptr *ptr, t_map *map)
       || (inst->arg[0].type & T_REG && (unsigned int)inst->arg[0].arg > 16))
     return (84);
   nb = get_arg_value(&inst->arg[0], ptr, map);
-  nb = ptr->index_map + nb % IDX_MOD + (get_arg_value(&inst->arg[1], ptr, map));
-  ptr->father->reg[inst->arg[2].arg - 1] = ptr->index_map + (nb % IDX_MOD);
+  nb += get_arg_value(&(inst->arg[1]), ptr, map);
+  my_memncpy(&ptr->father->reg[inst->arg[2].arg - 1], &(map->arena[ptr->index_map + (nb % IDX_MOD)]), 4);
   ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);
 }

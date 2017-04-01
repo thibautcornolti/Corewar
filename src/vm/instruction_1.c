@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 19:20:12 2017 Thibaut Cornolti
+** Last update Sat Apr  1 21:18:44 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -40,7 +40,7 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
   int	temp;
 
   if (inst->inst != 0x02 || !(T_REG & inst->arg[1].type) ||
-      !(inst->arg[1].arg - 1) || inst->arg[1].arg > REG_NUMBER)
+      inst->arg[1].arg > REG_NUMBER)
     return (84);
   temp = get_arg_value(&inst->arg[0], ptr, map);
   ptr->father->reg[inst->arg[1].arg - 1] = temp;

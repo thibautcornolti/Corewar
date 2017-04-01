@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Sat Apr  1 20:08:40 2017 Thibaut Cornolti
+** Last update Sat Apr  1 21:08:33 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -42,6 +42,8 @@ static void	fill_arg(t_inst *inst, t_map *map, t_ptr *ptr)
 	((char *) (&(inst->arg[i].arg)))[j] =
 	  map->arena[(ptr->index_map + j) % MEM_SIZE];
       endian(&(inst->arg[i].arg), type_size);
+      if (type_size == 2)
+	inst->arg[i].arg = (short) inst->arg[i].arg;
       ptr->index_map += type_size;
       dprintf(2, "arg %d:%d\n", i, inst->arg[i].arg);
     }
