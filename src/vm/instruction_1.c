@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 17:50:42 2017 Thibaut Cornolti
+** Last update Sat Apr  1 18:22:57 2017 Bastien
 */
 
 #include <unistd.h>
@@ -37,18 +37,13 @@ int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  int	temp;
+
   if (inst->inst != 0x02 || !(T_REG & inst->arg[1].type) ||
       !(inst->arg[1].arg - 1) || inst->arg[1].arg > REG_NUMBER)
     return (84);
-  if (inst->arg[0].type & T_IND)
-    my_memncpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map->arena +
-	       (ptr->index_map + inst->arg[0].arg % IDX_MOD) %
-	       MEM_SIZE, 4);
-  else if (inst->arg[0].type & T_DIR)
-    my_memncpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map->arena +
-	       inst->arg[0].arg % MEM_SIZE, 4);
-  else
-    return (84);
+  temp = get_arg_value(&inst->arg[1], ptr, map);
+  my_memncpy(&temp, &ptr->father->reg[inst->arg[0].arg], 4);
   ptr->carry = (ptr->father->reg[inst->arg[1].arg - 1]) ? 0 : 1;
   return (0);
 }
