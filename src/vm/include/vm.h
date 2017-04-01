@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Sat Apr  1 21:49:30 2017 Thibaut Cornolti
+** Last update Sat Apr  1 23:07:48 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -13,10 +13,9 @@
 
 # define MAGIC                  0xea83f3
 # define MEM_SIZE		(6*1024)
-# define IDX_MOD		521
 # define MAX_ARGS_NUMBER	4
 
-# define CYCLE_TO_DIE		1536
+# define CYCLE_TO_DIE		50536
 # define CYCLE_DELTA		1
 
 # define REG_NUMBER		16
@@ -49,7 +48,7 @@ typedef struct		s_champ
   int			color;
   t_ptr			*chained_ptr;
   int			live;
-  int			reg[REG_SIZE];
+  int			reg[REG_NUMBER];
   struct s_champ	*next;
   struct s_champ	*prev;
 }			t_champ;

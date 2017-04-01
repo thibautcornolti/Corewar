@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 21:18:44 2017 Thibaut Cornolti
+** Last update Sat Apr  1 23:06:47 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -15,7 +15,7 @@
 int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   t_champ	*temp;
-  
+
   (void) map;
   if (inst->inst != 0x01)
     return (84);
@@ -60,9 +60,9 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
       ptr->father->reg[inst->arg[1].arg - 1] = ptr->father->reg[inst->arg[0].arg - 1];
       return (0);
     }
-  my_memncpy (map->arena + ((ptr->index_map + inst->arg[1].arg % IDX_MOD) % MEM_SIZE),
+  my_memncpy (map->arena + ((ptr->index_map + inst->arg[1].arg) % MEM_SIZE),
 	      endian(&ptr->father->reg[inst->arg[0].arg - 1], 4), 4);
-  my_memncpy (map->color + ((ptr->index_map + inst->arg[1].arg % IDX_MOD) % MEM_SIZE),
+  my_memncpy (map->color + ((ptr->index_map + inst->arg[1].arg) % MEM_SIZE),
 	      &ptr->father->color, 4);
   return (0);
 }

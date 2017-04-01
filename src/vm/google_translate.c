@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Sat Apr  1 21:30:39 2017 Thibaut Cornolti
+** Last update Sat Apr  1 22:36:58 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -81,7 +81,7 @@ int		translate(t_ptr *ptr, t_map *map)
     }
   my_memset(&inst, 0, sizeof(t_inst));
   inst.inst = map->arena[PTR_INDEX];
-  dprintf(2, "Champion:%d, inst:%x, pos:%d\n", ptr->father->reg[0], inst.inst, PTR_INDEX);
+  dprintf(2, "Champion:%d, inst:%x, pos:%d\n", ptr->father->color, inst.inst, PTR_INDEX);
   ptr->index_map += 1;
   fill(&inst, map, ptr);
   ptr->cycle = inst_to_time(inst.inst);

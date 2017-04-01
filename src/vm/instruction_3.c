@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Sat Apr  1 21:56:31 2017 Thibaut Cornolti
+** Last update Sat Apr  1 22:42:06 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@ int	sti(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   temp1 = get_arg_value(&(inst->arg[1]), ptr, map);
   temp2 = get_arg_value(&(inst->arg[1]), ptr, map);
-  map->arena[(ptr->index_map + (temp1 + temp2) % IDX_MOD) % MEM_SIZE] =
+  map->arena[(ptr->index_map + temp1 + temp2) % MEM_SIZE] =
     ptr->father->reg[inst->arg[0].arg - 1];
   return (0);
 }
@@ -39,7 +39,7 @@ int	ifork(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   my_memset(new, 0, sizeof(t_ptr));
   new->father = ptr->father;
-  new->index_map = inst->arg[0].arg % IDX_MOD;
+  printf("FORK AT=%d\n", new->index_map = ptr->index_map + inst->arg[0].arg);
   if (new->index_map < 0)
     new->index_map += MEM_SIZE;
   new->cycle = inst_to_time(inst->inst);

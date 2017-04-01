@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:08:53 2017 Luc
-** Last update Sat Apr  1 21:51:35 2017 Thibaut Cornolti
+** Last update Sat Apr  1 22:21:25 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -77,7 +77,7 @@ int	zjmp(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   if (!ptr->carry)
     return (0);
-  ptr->index_map += inst->arg[0].arg % IDX_MOD;
+  ptr->index_map += inst->arg[0].arg;
   if (ptr->index_map < 0)
     ptr->index_map += MEM_SIZE;
   printf("JUMPED TO %d\n", ptr->index_map);
@@ -95,7 +95,8 @@ int	ldi(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   nb = get_arg_value(&inst->arg[0], ptr, map);
   nb += get_arg_value(&(inst->arg[1]), ptr, map);
-  my_memncpy(&ptr->father->reg[inst->arg[2].arg - 1], &(map->arena[ptr->index_map + (nb % IDX_MOD)]), 4);
+  my_memncpy(&ptr->father->reg[inst->arg[2].arg - 1],
+	     &(map->arena[ptr->index_map + nb]), 4);
   ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);
 }
