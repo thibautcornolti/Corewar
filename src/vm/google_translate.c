@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Sat Apr  1 22:36:58 2017 Thibaut Cornolti
+** Last update Sat Apr  1 23:17:21 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -62,7 +62,7 @@ static void	fill(t_inst *inst, t_map *map, t_ptr *ptr)
       fill_arg(inst, map, ptr);
     }
   else
-    exit(my_puterror("Invalid instruction!\n"));
+    my_puterror("Invalid instruction, skipping!\n");
 }
 
 int		translate(t_ptr *ptr, t_map *map)
