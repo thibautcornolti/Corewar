@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 17:01:06 2017 Thibaut Cornolti
+** Last update Sat Apr  1 17:04:11 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -22,9 +22,9 @@ int		live(t_inst *inst, t_ptr *ptr, t_map *map)
   temp = ptr->father;
   while (temp->prev)
     temp = temp->prev;
-  while (temp->next && temp->reg[0] != inst->arg[0].arg)
+  while (temp->next && temp->color != inst->arg[0].arg)
     temp = temp->next;
-  if (!temp->next && temp->reg[0] != inst->arg[0].arg)
+  if (!temp->next && temp->color != inst->arg[0].arg)
     return (84);
   temp->live = 0;
   write(1, "The player ", 11);
