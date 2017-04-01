@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 16:05:10 2017 Thibaut Cornolti
-** Last update Fri Mar 31 19:25:32 2017 Thibaut Cornolti
+** Last update Sat Apr  1 16:18:26 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -30,7 +30,7 @@ void			redirect_inst(t_inst *inst,
 {
   static int	(*fct[16])(t_inst *, t_ptr *, t_map *) =
     {&live, &ld, &st, &add, &sub, &and, &or, &xor, &zjmp,
-     &ldi, &sti, &ifork, &lld, &lldi, &lfork, &aff};
+     &ldi, &sti, &ifork, &lld, &lld, &lfork, &aff};
 
   if ((unsigned char) inst->inst > 16)
     return ;
