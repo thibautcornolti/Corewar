@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:08:53 2017 Luc
-** Last update Sat Apr  1 20:19:02 2017 Bastien
+** Last update Sat Apr  1 20:24:31 2017 Bastien
 */
 
 #include "vm.h"
@@ -95,8 +95,7 @@ int	ldi(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   nb = get_arg_value(&inst->arg[0], ptr, map);
   nb = ptr->index_map + nb % IDX_MOD + (get_arg_value(&inst->arg[1], ptr, map));
-  my_memncpy(&ptr->father->reg[inst->arg[2].arg - 1],
-	     &ptr->index_map + nb % IDX_MOD, 4);
+  ptr->father->reg[inst->arg[2].arg - 1] = ptr->index_map + (nb % IDX_MOD);
   ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);
 }
