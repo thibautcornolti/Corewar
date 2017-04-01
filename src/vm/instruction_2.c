@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:08:53 2017 Luc
-** Last update Sat Apr  1 20:24:31 2017 Bastien
+** Last update Sat Apr  1 20:25:49 2017 Bastien
 */
 
 #include "vm.h"
@@ -80,7 +80,6 @@ int	zjmp(t_inst *inst, t_ptr *ptr, t_map *map)
   ptr->index_map += inst->arg[0].arg % IDX_MOD;
   if (ptr->index_map < 0)
     ptr->index_map += MEM_SIZE;
-  printf("index after zjmp:%d\n", ptr->index_map);
   return (0);
 }
 
