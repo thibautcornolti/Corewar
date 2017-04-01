@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 19:03:03 2017 Thibaut Cornolti
-** Last update Sat Apr  1 17:12:31 2017 Thibaut Cornolti
+** Last update Sat Apr  1 19:47:38 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -24,8 +24,7 @@ static void	do_inst(t_map *map, t_champ *champ)
       if (ptr->father->live < CYCLE_TO_DIE)
 	while (ptr)
 	  {
-	    if (map->arena[ptr->index_map % MEM_SIZE] == 0);
-	    else if (ptr->cycle)
+	    if (ptr->cycle)
 	      ptr->cycle -= 1;
 	    else
 	      translate(ptr, map);

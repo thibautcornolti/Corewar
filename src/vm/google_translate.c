@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Sat Apr  1 18:04:49 2017 Thibaut Cornolti
+** Last update Sat Apr  1 20:08:40 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -72,6 +72,8 @@ int		translate(t_ptr *ptr, t_map *map)
   tmp_before = ptr->index_map;
   if (map->arena[PTR_INDEX] == 0)
     {
+      /* if (ptr->father->reg[0] == 2) */
+      /* 	dprintf(2, "Champion:%d, inst:NULL, pos:%d\n", ptr->father->reg[0], PTR_INDEX );*/
       ptr->father->live += 1;
       ptr->index_map += 1;
       return (0);
@@ -85,6 +87,7 @@ int		translate(t_ptr *ptr, t_map *map)
   tmp_index = ptr->index_map;
   ptr->index_map = tmp_before;
   redirect_inst(&inst, map, ptr);
-  ptr->index_map = tmp_index;
+  if (inst.inst != 0x09)
+    ptr->index_map = tmp_index;
   return (0);
 }
