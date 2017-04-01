@@ -5,24 +5,24 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Sat Apr  1 15:24:59 2017 Bastien
+** Last update Sat Apr  1 15:38:39 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
 
 int	sti(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  (void)ptr;(void)map;
   int	temp1;
   int	temp2;
 
   if (inst->inst != 0x0b || !(inst->arg[0].type & T_REG) ||
-      (unsigned int)inst->arg[0].arg >= REG_NUMBER ||
+      (unsigned int) inst->arg[0].arg > REG_NUMBER ||
       inst->arg[2].type & T_IND)
     return (84);
-  temp1 = (inst->arg[1].type & T_REG) ? ptr->father->reg[inst->arg[1].arg] : temp1;
-  temp1 = 0;
-  
+  temp1 = get_arg_value(inst->arg[1], ptr, map);
+  temp2 = get_arg_value(inst->arg[1], ptr, map);
+  map->arena[(ptr->index_map + (temp1 + temp2) % IDX_MOD) % MEM_SIZE] =
+    ptr->father->reg[inst->arg[0].arg - 1];
   return (0);
 }
 
