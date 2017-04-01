@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Fri Mar 31 19:22:23 2017 Bastien
+** Last update Sat Apr  1 16:36:09 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_
@@ -98,6 +98,7 @@ int			pars_cmd(t_cmd **, char **);
 t_champ			*load_champ(t_champ *, t_map *, t_cmd *);
 int			translate(t_ptr *, t_map *);
 void			fill_arg_live(t_inst *, t_map *, t_ptr *);
+void			fill_arg_spec(t_inst *, t_map *, t_ptr *);
 void			redirect_inst(t_inst *, t_map *, t_ptr *);
 t_champ			*get_last_live(t_champ *);
 int			get_arg_value(t_arg *, t_ptr *, t_map *);

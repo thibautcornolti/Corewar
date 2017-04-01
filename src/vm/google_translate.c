@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Fri Mar 31 16:15:56 2017 Thibaut Cornolti
+** Last update Sat Apr  1 16:28:18 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -48,6 +48,21 @@ static void	fill_arg(t_inst *inst, t_map *map, t_ptr *ptr)
   dprintf(2, "\n");
 }
 
+static void	fill(t_inst *inst, t_map *map, t_ptr *ptr)
+{
+  if (inst.inst == 1)
+    fill_arg_live(inst, map, ptr);
+  else if (inst.inst == 9 || inst.inst == 12 || inst.inst == 15)
+    fill_arg_spec(inst, map, ptr);
+  else if
+    {
+      ptr->index_map += set_type(&inst, map->arena[PTR_INDEX]);
+      fill_arg(&inst, map, ptr);
+    }
+  else
+    exit(my_puterror("Invalid instruction!\n"));
+}
+
 int		translate(t_ptr *ptr, t_map *map)
 {
   t_inst	inst;
@@ -62,16 +77,7 @@ int		translate(t_ptr *ptr, t_map *map)
   inst.inst = map->arena[PTR_INDEX];
   printf("Champion:%d, inst:%x, pos:%d\n", ptr->father->reg[0], inst.inst, PTR_INDEX);
   ptr->index_map += 1;
-  if (inst.inst == 1)
-    fill_arg_live(&inst, map, ptr);
-  else if (!(inst.inst == 9 ||
-	inst.inst == 12 || inst.inst == 15))
-    {
-      ptr->index_map += set_type(&inst, map->arena[PTR_INDEX]);
-      fill_arg(&inst, map, ptr);
-    }
-  else
-    exit(my_puterror("non géré\n"));
+  fill(&inst, map, ptr);
   ptr->cycle = inst_to_time(inst.inst);
   redirect_inst(&inst, map, ptr);
   return (0);
