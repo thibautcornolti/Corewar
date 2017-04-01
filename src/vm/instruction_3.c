@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Sat Apr  1 20:48:38 2017 Thibaut Cornolti
+** Last update Sat Apr  1 21:56:31 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -40,6 +40,9 @@ int	ifork(t_inst *inst, t_ptr *ptr, t_map *map)
   my_memset(new, 0, sizeof(t_ptr));
   new->father = ptr->father;
   new->index_map = inst->arg[0].arg % IDX_MOD;
+  if (new->index_map < 0)
+    new->index_map += MEM_SIZE;
+  new->cycle = inst_to_time(inst->inst);
   new->carry = 1;
   ptr->next = new;
   new->next = NULL;
@@ -48,34 +51,32 @@ int	ifork(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	lld(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  int	temp;
+
   if (inst->inst != 0x02 || !(T_REG & inst->arg[1].type) ||
-      (unsigned int) inst->arg[1].arg > REG_NUMBER)
+      inst->arg[1].arg > REG_NUMBER)
     return (84);
-  if (inst->arg[0].type & T_IND)
-    my_memncpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map->arena +
-	       (ptr->father->reg[0] + inst->arg[0].arg) %
-	       MEM_SIZE, 4);
-  else if (inst->arg[0].type & T_DIR)
-    my_memncpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map->arena +
-	       inst->arg[0].arg % MEM_SIZE, 4);
-  else
-    return (84);
+  temp = get_larg_value(&inst->arg[0], ptr, map);
+  ptr->father->reg[inst->arg[1].arg - 1] = temp;
   ptr->carry = (ptr->father->reg[inst->arg[1].arg - 1]) ? 0 : 1;
   return (0);
 }
 
 int	lfork(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  t_ptr *new;
+  t_ptr	*new;
 
   (void) map;
-  if (inst->inst != 0x0c)
+  if (inst->inst != 0x0f)
     return (84);
   if ((new = malloc(sizeof(t_ptr))) == NULL)
     return (84);
   my_memset(new, 0, sizeof(t_ptr));
   new->father = ptr->father;
   new->index_map = inst->arg[0].arg;
+  if (new->index_map < 0)
+    new->index_map += MEM_SIZE;
+  new->cycle = inst_to_time(inst->inst);
   new->carry = 1;
   ptr->next = new;
   new->next = NULL;

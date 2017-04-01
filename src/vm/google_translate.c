@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Sat Apr  1 21:08:33 2017 Thibaut Cornolti
+** Last update Sat Apr  1 21:30:39 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -76,7 +76,6 @@ int		translate(t_ptr *ptr, t_map *map)
     {
       /* if (ptr->father->reg[0] == 2) */
       /* 	dprintf(2, "Champion:%d, inst:NULL, pos:%d\n", ptr->father->reg[0], PTR_INDEX );*/
-      ptr->father->live += 1;
       ptr->index_map += 1;
       return (0);
     }
