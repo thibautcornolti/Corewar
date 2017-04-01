@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Fri Mar 31 19:36:33 2017 Thibaut Cornolti
+** Last update Sat Apr  1 12:24:06 2017 Bastien
 */
 
 #include <unistd.h>
@@ -43,7 +43,8 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   if (inst->arg[0].type & T_IND)
     my_memncpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map->arena +
-	       (ptr->father->reg[0] + inst->arg[0].arg % IDX_MOD) % MEM_SIZE, 4);
+	       (ptr->father->reg[0] + inst->arg[0].arg % IDX_MOD) %
+	       MEM_SIZE, 4);
   else if (inst->arg[0].type & T_DIR)
     my_memncpy(&(ptr->father->reg[inst->arg[1].arg - 1]), map->arena +
 	       inst->arg[0].arg % MEM_SIZE, 4);
@@ -64,9 +65,11 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
       ptr->father->reg[inst->arg[0].arg - 1] = inst->arg[1].arg;
       return (0);
     }
-  my_memncpy (map->arena + (ptr->father->reg[0] + inst->arg[1].arg % IDX_MOD) % MEM_SIZE,
+  my_memncpy (map->arena + (ptr->father->reg[0] +
+			    inst->arg[1].arg % IDX_MOD) % MEM_SIZE,
 	      &ptr->father->reg[inst->arg[0].arg - 1], 4);
-  my_memncpy (map->color + (ptr->father->reg[0] + inst->arg[1].arg % IDX_MOD) % MEM_SIZE,
+  my_memncpy (map->color + (ptr->father->reg[0] +
+			    inst->arg[1].arg % IDX_MOD) % MEM_SIZE,
 	      &ptr->father->color, 4);
   return (0);
 }
@@ -74,12 +77,14 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 int	add(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   (void)ptr;(void)map;
-  if (inst->inst != 0x04 || !(inst->arg[0].type & T_REG) || !(inst->arg[1].type & T_REG) ||
-      !(inst->arg[2].type & T_REG) || !(inst->arg[2].arg - 1) ||
+  if (inst->inst != 0x04 || !(inst->arg[0].type & T_REG) ||
+      !(inst->arg[1].type & T_REG) || !(inst->arg[2].type & T_REG) ||
+      !(inst->arg[2].arg - 1) ||
       inst->arg[0].arg - 1 > REG_NUMBER || inst->arg[1].arg - 1 > REG_NUMBER ||
       inst->arg[2].arg - 1 > REG_NUMBER)
     return (84);
-  ptr->father->reg[inst->arg[2].arg - 1] = ptr->father->reg[inst->arg[0].arg - 1]
+  ptr->father->reg[inst->arg[2].arg - 1] =
+    ptr->father->reg[inst->arg[0].arg - 1]
     + ptr->father->reg[inst->arg[1].arg - 1];
   ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);
@@ -88,12 +93,14 @@ int	add(t_inst *inst, t_ptr *ptr, t_map *map)
 int	sub(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   (void)ptr;(void)map;
-  if (inst->inst != 0x05 || !(inst->arg[0].type & T_REG) || !(inst->arg[1].type & T_REG) ||
-      !(inst->arg[2].type & T_REG) || !(inst->arg[2].arg - 1) ||
+  if (inst->inst != 0x05 || !(inst->arg[0].type & T_REG) ||
+      !(inst->arg[1].type & T_REG) || !(inst->arg[2].type & T_REG) ||
+      !(inst->arg[2].arg - 1) ||
       inst->arg[0].arg - 1 > REG_NUMBER || inst->arg[1].arg - 1 > REG_NUMBER ||
       inst->arg[2].arg - 1 > REG_NUMBER)
     return (84);
-  ptr->father->reg[inst->arg[2].arg - 1] = ptr->father->reg[inst->arg[0].arg - 1]
+  ptr->father->reg[inst->arg[2].arg - 1] =
+    ptr->father->reg[inst->arg[0].arg - 1]
     - ptr->father->reg[inst->arg[1].arg - 1];
   ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);

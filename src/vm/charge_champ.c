@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Fri Mar 31 19:24:27 2017 Bastien
+** Last update Sat Apr  1 11:30:18 2017 Bastien
 */
 
 #include <unistd.h>
@@ -74,7 +74,7 @@ t_champ		*load_champ(t_champ *champ, t_map *arena, t_cmd *cmd)
 
   if ((fd = open(cmd->prog_name, O_RDONLY)) <= 0)
     return (NULL);
-  if (read(fd, &header, sizeof(t_header)) != sizeof(header))
+  if (read(fd, &header, sizeof(t_header)) != sizeof(t_header))
     return (NULL);
   if ((check_magic(&header.magic)) == 84)
     return (NULL);
