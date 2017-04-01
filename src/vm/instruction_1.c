@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 18:48:57 2017 Bastien
+** Last update Sat Apr  1 19:03:15 2017 Bastien
 */
 
 #include <unistd.h>
@@ -57,15 +57,11 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
     return (84);
   if (inst->arg[1].type & T_REG)
     {
-      ptr->father->reg[inst->arg[0].arg - 1] = inst->arg[1].arg;
+      ptr->father->reg[inst->arg[1].arg - 1] = ptr->father->reg[inst->arg[0].arg - 1];
       return (0);
     }
-  my_memncpy (map->arena + (ptr->index_map +
-			    inst->arg[1].arg % IDX_MOD) % MEM_SIZE,
-	      &ptr->father->reg[inst->arg[0].arg - 1], 4);
-  my_memncpy (map->color + (ptr->index_map +
-			    inst->arg[1].arg % IDX_MOD) % MEM_SIZE,
-	      &ptr->father->color, 4);
+  my_memncpy (map->arena + (ptr->index_map + inst->arg[1].arg % IDX_MOD) % MEM_SIZE, &ptr->father->reg[inst->arg[0].arg - 1], 4);
+  my_memncpy (map->color + (ptr->index_map + inst->arg[1].arg % IDX_MOD) % MEM_SIZE, &ptr->father->color, 4);
   return (0);
 }
 
