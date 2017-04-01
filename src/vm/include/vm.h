@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Sat Apr  1 16:36:09 2017 Thibaut Cornolti
+** Last update Sat Apr  1 18:03:29 2017 Thibaut Cornolti
 */
 
 #ifndef VM_H_

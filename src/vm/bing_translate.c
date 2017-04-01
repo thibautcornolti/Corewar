@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 16:05:10 2017 Thibaut Cornolti
-** Last update Sat Apr  1 16:59:27 2017 Thibaut Cornolti
+** Last update Sat Apr  1 17:46:41 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -50,5 +50,6 @@ void			redirect_inst(t_inst *inst,
 
   if ((unsigned char) inst->inst > 16)
     return ;
-  fct[inst->inst - 1](inst, ptr, map);
+  if ((fct[inst->inst - 1](inst, ptr, map)) == 84)
+    printf("Instruction %d échouée\n", inst->inst);
 }

@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 19:03:03 2017 Thibaut Cornolti
-** Last update Fri Mar 31 16:24:16 2017 Thibaut Cornolti
+** Last update Sat Apr  1 17:12:31 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -21,18 +21,16 @@ static void	do_inst(t_map *map, t_champ *champ)
   while (champ)
     {
       ptr = champ->chained_ptr;
-      while (ptr)
-	{
-	  if (ptr->father->live < CYCLE_TO_DIE)
-	    {
-	      if (map->arena[ptr->index_map % MEM_SIZE] == 0);
-	      else if (ptr->cycle)
-		ptr->cycle -= 1;
-	      else
-		translate(ptr, map);
-	    }
-	  ptr = ptr->next;
-	}
+      if (ptr->father->live < CYCLE_TO_DIE)
+	while (ptr)
+	  {
+	    if (map->arena[ptr->index_map % MEM_SIZE] == 0);
+	    else if (ptr->cycle)
+	      ptr->cycle -= 1;
+	    else
+	      translate(ptr, map);
+	    ptr = ptr->next;
+	  }
       champ->live += 1;
       champ = champ->next;
     }

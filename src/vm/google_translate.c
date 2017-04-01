@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:21:36 2017 Thibaut Cornolti
-** Last update Sat Apr  1 16:53:16 2017 Thibaut Cornolti
+** Last update Sat Apr  1 18:04:49 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -66,7 +66,10 @@ static void	fill(t_inst *inst, t_map *map, t_ptr *ptr)
 int		translate(t_ptr *ptr, t_map *map)
 {
   t_inst	inst;
+  int		tmp_index;
+  int		tmp_before;
 
+  tmp_before = ptr->index_map;
   if (map->arena[PTR_INDEX] == 0)
     {
       ptr->father->live += 1;
@@ -75,10 +78,13 @@ int		translate(t_ptr *ptr, t_map *map)
     }
   my_memset(&inst, 0, sizeof(t_inst));
   inst.inst = map->arena[PTR_INDEX];
-  printf("Champion:%d, inst:%x, pos:%d\n", ptr->father->reg[0], inst.inst, PTR_INDEX);
+  dprintf(2, "Champion:%d, inst:%x, pos:%d\n", ptr->father->reg[0], inst.inst, PTR_INDEX);
   ptr->index_map += 1;
   fill(&inst, map, ptr);
   ptr->cycle = inst_to_time(inst.inst);
+  tmp_index = ptr->index_map;
+  ptr->index_map = tmp_before;
   redirect_inst(&inst, map, ptr);
+  ptr->index_map = tmp_index;
   return (0);
 }
