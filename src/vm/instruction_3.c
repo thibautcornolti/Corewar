@@ -5,10 +5,12 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Sat Apr  1 16:19:47 2017 Thibaut Cornolti
+** Last update Sat Apr  1 16:54:41 2017 Thibaut Cornolti
 */
 
+#include <stdlib.h>
 #include "vm.h"
+#include "my.h"
 
 int	sti(t_inst *inst, t_ptr *ptr, t_map *map)
 {
@@ -19,8 +21,8 @@ int	sti(t_inst *inst, t_ptr *ptr, t_map *map)
       (unsigned int) inst->arg[0].arg > REG_NUMBER ||
       inst->arg[2].type & T_IND)
     return (84);
-  temp1 = get_arg_value(inst->arg[1], ptr, map);
-  temp2 = get_arg_value(inst->arg[1], ptr, map);
+  temp1 = get_arg_value(&(inst->arg[1]), ptr, map);
+  temp2 = get_arg_value(&(inst->arg[1]), ptr, map);
   map->arena[(ptr->index_map + (temp1 + temp2) % IDX_MOD) % MEM_SIZE] =
     ptr->father->reg[inst->arg[0].arg - 1];
   return (0);
@@ -30,6 +32,7 @@ int	ifork(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   t_ptr	*new;
 
+  (void) map;
   if (inst->inst != 0x0c || !(inst->arg[0].type & T_DIR))
     return (84);
   if ((new = malloc(sizeof(t_ptr))) == NULL)
@@ -65,6 +68,7 @@ int	lfork(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   t_ptr *new;
 
+  (void) map;
   if (inst->inst != 0x0c || !(inst->arg[0].type & T_DIR))
     return (84);
   if ((new = malloc(sizeof(t_ptr))) == NULL)

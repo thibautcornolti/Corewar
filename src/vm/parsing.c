@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 11:06:17 2017 Luc
-** Last update Sat Apr  1 15:59:50 2017 Luc
+** Last update Sat Apr  1 16:51:42 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -38,8 +38,7 @@ static int	add_to_list(t_cmd **champ,
   return (0);
 }
 
-static int	get_info_champ(char **argv, int *i,
-			       int *adress, int *num, int var[3])
+static int	get_info_champ(char **argv, int *i, int var[3])
 {
   if (my_strcmp(argv[*i], "-n") == 0)
     {
@@ -77,7 +76,7 @@ int		pars_cmd(t_cmd **champ, char **argv)
   var[2] = 0;
   while (argv[i] != NULL)
     {
-      if ((get_info_champ(argv, &i, &adress, &num, var)) == 84)
+      if ((get_info_champ(argv, &i, var)) == 84)
 	return (84);
       if ((my_strcmp(argv[i], "-a") == 1) &&
 	  (my_strcmp(argv[i], "-n") == 1)

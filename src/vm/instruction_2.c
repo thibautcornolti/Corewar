@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:08:53 2017 Luc
-** Last update Sat Apr  1 16:43:55 2017 Bastien
+** Last update Sat Apr  1 16:54:21 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -72,6 +72,7 @@ int	xor(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	zjmp(t_inst *inst, t_ptr *ptr, t_map *map)
 {
+  (void) map;
   if (inst->inst != 0x09)
     return (84);
   if (!(inst->arg[0].type & T_DIR))
@@ -86,7 +87,7 @@ int	ldi(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   int	nb;
 
-  (void)map;
+  (void) map;
   if (inst->inst != 0x0a || inst->arg[1].type & T_IND ||
       !(inst->arg[2].type & T_REG) || (unsigned int)inst->arg[2].arg > REG_SIZE
       || (inst->arg[0].type & T_REG && (unsigned int)inst->arg[0].arg > 16))

@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 16:45:25 2017 Bastien
+** Last update Sat Apr  1 17:01:06 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -16,8 +16,8 @@ int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   t_champ	*temp;
   
-  (void)map;
-  if (inst->inst != 0x01 || !(T_DIR & inst->arg[0].type))
+  (void) map;
+  if (inst->inst != 0x01)
     return (84);
   temp = ptr->father;
   while (temp->prev)
@@ -37,7 +37,6 @@ int		live(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  (void)ptr;(void)map;
   if (inst->inst != 0x02 || !(T_REG & inst->arg[1].type) ||
       !(inst->arg[1].arg - 1) || inst->arg[1].arg - 1 > REG_NUMBER)
     return (84);
@@ -56,7 +55,6 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  (void)ptr;(void)map;
   if (inst->inst != 0x03 || !(inst->arg[0].type & T_REG) ||
       inst->arg[1].type & T_DIR || (unsigned int)inst->arg[0].arg < 16)
     return (84);
@@ -76,7 +74,7 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	add(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  (void)ptr;(void)map;
+  (void) map;
   if (inst->inst != 0x04 || !(inst->arg[0].type & T_REG) ||
       !(inst->arg[1].type & T_REG) || !(inst->arg[2].type & T_REG) ||
       !(inst->arg[2].arg - 1) ||
@@ -92,7 +90,7 @@ int	add(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	sub(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  (void)ptr;(void)map;
+  (void) map;
   if (inst->inst != 0x05 || !(inst->arg[0].type & T_REG) ||
       !(inst->arg[1].type & T_REG) || !(inst->arg[2].type & T_REG) ||
       !(inst->arg[2].arg - 1) ||
