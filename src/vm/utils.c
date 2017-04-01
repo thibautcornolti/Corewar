@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 17:49:39 2017 Thibaut Cornolti
-** Last update Fri Mar 31 19:04:29 2017 Thibaut Cornolti
+** Last update Sat Apr  1 18:23:39 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -21,7 +21,7 @@ int		get_arg_value(t_arg *arg, t_ptr *ptr, t_map *map)
       res = ptr->father->reg[arg->arg - 1];
     }
   else if (arg->type == T_DIR)
-    res = map->arena[arg->arg % MEM_SIZE];
+    res = arg->arg;
   else
     res = map->arena[(ptr->index_map +
 		      arg->arg % IDX_MOD) % MEM_SIZE];
