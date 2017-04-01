@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 16:05:10 2017 Thibaut Cornolti
-** Last update Fri Mar 31 19:25:32 2017 Thibaut Cornolti
+** Last update Sat Apr  1 16:39:15 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -25,12 +25,28 @@ void			fill_arg_live(t_inst *inst,
   inst->arg[0].type = T_IND;
 }
 
+void			fill_arg_spec(t_inst *inst,
+				      t_map *map, t_ptr *ptr)
+{
+  int			j;
+  short			val;
+
+  j = -1;
+  val = 0;
+  while (++j < 2)
+    (char *) (&val)[j] = map->arena[(ptr->index_map + j) % MEM_SIZE];
+  endian(&val, 2);
+  inst->arg[0].arg = val;
+  ptr->index_map += 2;
+  inst->arg[0].type = T_IND;
+}
+
 void			redirect_inst(t_inst *inst,
 				      t_map *map, t_ptr *ptr)
 {
   static int	(*fct[16])(t_inst *, t_ptr *, t_map *) =
     {&live, &ld, &st, &add, &sub, &and, &or, &xor, &zjmp,
-     &ldi, &sti, &ifork, &lld, &lldi, &lfork, &aff};
+     &ldi, &sti, &ifork, &lld, &lld, &lfork, &aff};
 
   if ((unsigned char) inst->inst > 16)
     return ;
