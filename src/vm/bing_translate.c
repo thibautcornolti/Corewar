@@ -5,14 +5,16 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 16:05:10 2017 Thibaut Cornolti
-** Last update Fri Mar 31 16:15:02 2017 Thibaut Cornolti
+** Last update Fri Mar 31 19:25:32 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
+#include "inst.h"
 
-void		fill_arg_live(t_inst *inst, t_map *map, t_ptr *ptr)
+void			fill_arg_live(t_inst *inst,
+				      t_map *map, t_ptr *ptr)
 {
-  int		j;
+  int			j;
 
   j = -1;
   while (++j < 4)
@@ -21,11 +23,16 @@ void		fill_arg_live(t_inst *inst, t_map *map, t_ptr *ptr)
   endian(&(inst->arg[0].arg), 4);
   ptr->index_map += 4;
   inst->arg[0].type = T_IND;
-  printf("live arg %d\n\n", inst->arg[0].arg);
 }
 
-void		redirect_inst(t_inst *inst, t_map *map, t_ptr *ptr)
+void			redirect_inst(t_inst *inst,
+				      t_map *map, t_ptr *ptr)
 {
-  if (inst->inst == 0x01)
-    live(inst, ptr, map);
+  static int	(*fct[16])(t_inst *, t_ptr *, t_map *) =
+    {&live, &ld, &st, &add, &sub, &and, &or, &xor, &zjmp,
+     &ldi, &sti, &ifork, &lld, &lldi, &lfork, &aff};
+
+  if ((unsigned char) inst->inst > 16)
+    return ;
+  fct[inst->inst - 1](inst, ptr, map);
 }

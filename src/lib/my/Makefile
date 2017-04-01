@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Fri Oct 14 09:19:13 2016 Thibaut Cornolti
-## Last update Mon Mar 20 13:19:33 2017 Luc
+## Last update Fri Mar 31 18:15:37 2017 Bastien
 ##
 
 SRC	=	my_putchar.c		\
@@ -58,6 +58,7 @@ SRC	=	my_putchar.c		\
 		get_next_line.c		\
 		get_next_line_2.c	\
 		my_strsplit.c		\
+		my_strndup.c		\
 		my_strmcat.c
 
 OBJ	=	$(SRC:.c=.o)

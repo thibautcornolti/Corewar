@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Fri Mar 31 15:33:44 2017 Bastien
+** Last update Sat Apr  1 11:30:18 2017 Bastien
 */
 
 #include <unistd.h>
@@ -45,16 +45,18 @@ t_champ		*add_champ(t_header *header, int pos, t_champ *champ, t_cmd *cmd)
 
   if ((new = malloc(sizeof(t_champ))) == NULL)
     return (NULL);
+  my_memset(new, 0, sizeof(t_champ));
   new->name = my_strdup(header->prog_name);
   new->comment = my_strdup(header->comment);
-  my_memset(new->reg, 0, sizeof(int) * REG_SIZE);
   new->reg[0] = cmd->prog_number;
+  new->color = cmd->prog_number;
   new->next = 0;
   if ((son = malloc(sizeof(t_ptr))) == NULL)
     return (NULL);
   my_memset(son, 0, sizeof(t_ptr));
   son->father = new;
   son->index_map = pos;
+  son->carry = 1;
   new->chained_ptr = son;
   temp = (champ) ? champ : new;
   while (temp->next != NULL)
@@ -72,7 +74,7 @@ t_champ		*load_champ(t_champ *champ, t_map *arena, t_cmd *cmd)
 
   if ((fd = open(cmd->prog_name, O_RDONLY)) <= 0)
     return (NULL);
-  if (read(fd, &header, sizeof(t_header)) != sizeof(header))
+  if (read(fd, &header, sizeof(t_header)) != sizeof(t_header))
     return (NULL);
   if ((check_magic(&header.magic)) == 84)
     return (NULL);
