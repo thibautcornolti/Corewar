@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Sat Apr  1 16:54:41 2017 Thibaut Cornolti
+** Last update Sat Apr  1 18:29:03 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -33,10 +33,10 @@ int	ifork(t_inst *inst, t_ptr *ptr, t_map *map)
   t_ptr	*new;
 
   (void) map;
-  if (inst->inst != 0x0c || !(inst->arg[0].type & T_DIR))
+  if (inst->inst != 0x0c)
     return (84);
   if ((new = malloc(sizeof(t_ptr))) == NULL)
-    return (0);
+    return (84);
   my_memset(new, 0, sizeof(t_ptr));
   new->father = ptr->father;
   new->index_map = inst->arg[0].arg % IDX_MOD;
@@ -69,10 +69,10 @@ int	lfork(t_inst *inst, t_ptr *ptr, t_map *map)
   t_ptr *new;
 
   (void) map;
-  if (inst->inst != 0x0c || !(inst->arg[0].type & T_DIR))
+  if (inst->inst != 0x0c)
     return (84);
   if ((new = malloc(sizeof(t_ptr))) == NULL)
-    return (0);
+    return (84);
   my_memset(new, 0, sizeof(t_ptr));
   new->father = ptr->father;
   new->index_map = inst->arg[0].arg;

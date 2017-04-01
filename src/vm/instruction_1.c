@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 18:22:57 2017 Bastien
+** Last update Sat Apr  1 18:33:07 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -42,8 +42,8 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
   if (inst->inst != 0x02 || !(T_REG & inst->arg[1].type) ||
       !(inst->arg[1].arg - 1) || inst->arg[1].arg > REG_NUMBER)
     return (84);
-  temp = get_arg_value(&inst->arg[1], ptr, map);
-  my_memncpy(&temp, &ptr->father->reg[inst->arg[0].arg], 4);
+  temp = get_arg_value(&inst->arg[0], ptr, map);
+  ptr->father->reg[inst->arg[1].arg - 1] = temp;
   ptr->carry = (ptr->father->reg[inst->arg[1].arg - 1]) ? 0 : 1;
   return (0);
 }
@@ -51,9 +51,9 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 {
   if (inst->inst != 0x03 || !(inst->arg[0].type & T_REG) ||
-      inst->arg[1].type & T_DIR || (unsigned int)inst->arg[0].arg < 16)
+      inst->arg[1].type & T_DIR || (unsigned int)inst->arg[0].arg > REG_NUMBER)
     return (84);
-  if (inst->arg[1].type & T_REG && (unsigned int)inst->arg[1].arg < REG_NUMBER)
+  if (inst->arg[1].type & T_REG && (unsigned int)inst->arg[1].arg <= REG_NUMBER)
     {
       ptr->father->reg[inst->arg[0].arg - 1] = inst->arg[1].arg;
       return (0);
