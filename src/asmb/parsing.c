@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Thu Mar 30 09:53:05 2017 Thibaut Cornolti
+** Last update Sun Apr  2 12:09:27 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -30,7 +30,7 @@ int		give_me_the_name(char *name, t_header *header)
   j = 0;
   while (name[i] != '"' && name[i] != '\0' && i <= NAME_LENGTH)
     header->prog_name[j++] = name[i++];
-  if (name[i] != '"')
+  if (!(name[i] == '"' && !name[i + 1]))
     return (84);
   return (0);
 }
@@ -49,7 +49,7 @@ int		give_me_comment(char *comment, t_header *header)
   j = 0;
   while (comment[i] != '"' && comment[i] != '\0' && i <= NAME_LENGTH)
     header->comment[j++] = comment[i++];
-  if (comment[i] != '"')
+  if (!(comment[i] == '"' && !comment[i + 1]))
     return (84);
   return (0);
 }
