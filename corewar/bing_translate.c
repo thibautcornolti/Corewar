@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Fri Mar 31 16:05:10 2017 Thibaut Cornolti
-** Last update Sun Apr  2 12:37:59 2017 Thibaut Cornolti
+** Last update Sun Apr  2 12:41:51 2017 Thibaut Cornolti
 */
 
 #include "vm.h"
@@ -35,7 +35,8 @@ void			fill_arg_spec(t_inst *inst,
   j = -1;
   val = 0;
   while (++j < 2)
-    ((char *) (&val))[j] = map->arena[(ptr->index_map + j) % MEM_SIZE];
+    ((char *) (&val))[j] =
+      map->arena[(ptr->index_map + j) % MEM_SIZE];
   endian(&val, 2);
   inst->arg[0].arg = val;
   ptr->index_map += 2;

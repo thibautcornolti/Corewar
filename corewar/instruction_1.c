@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sun Apr  2 11:55:27 2017 Bastien
+** Last update Sun Apr  2 12:43:39 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -62,10 +62,12 @@ int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 	ptr->father->reg[inst->arg[0].arg - 1];
       return (0);
     }
-  my_memncpy (map->arena + ((ptr->index_map + inst->arg[1].arg) % MEM_SIZE),
-	      endian(&ptr->father->reg[inst->arg[0].arg - 1], 4), 4);
-  my_memncpy (map->color + ((ptr->index_map + inst->arg[1].arg) % MEM_SIZE),
-	      &ptr->father->color, 4);
+  my_memncpy(map->arena + ((ptr->index_map
+			    + inst->arg[1].arg) % MEM_SIZE),
+	     endian(&ptr->father->reg[inst->arg[0].arg - 1], 4), 4);
+  my_memncpy(map->color + ((ptr->index_map
+			    + inst->arg[1].arg) % MEM_SIZE),
+	     &ptr->father->color, 4);
   return (0);
 }
 
@@ -75,7 +77,8 @@ int	add(t_inst *inst, t_ptr *ptr, t_map *map)
   if (inst->inst != 0x04 || !(inst->arg[0].type & T_REG) ||
       !(inst->arg[1].type & T_REG) || !(inst->arg[2].type & T_REG) ||
       !(inst->arg[2].arg - 1) ||
-      inst->arg[0].arg - 1 > REG_NUMBER || inst->arg[1].arg - 1 > REG_NUMBER ||
+      inst->arg[0].arg - 1 > REG_NUMBER ||
+      inst->arg[1].arg - 1 > REG_NUMBER ||
       inst->arg[2].arg - 1 > REG_NUMBER)
     return (84);
   ptr->father->reg[inst->arg[2].arg - 1] =
@@ -91,7 +94,8 @@ int	sub(t_inst *inst, t_ptr *ptr, t_map *map)
   if (inst->inst != 0x05 || !(inst->arg[0].type & T_REG) ||
       !(inst->arg[1].type & T_REG) || !(inst->arg[2].type & T_REG) ||
       !(inst->arg[2].arg - 1) ||
-      inst->arg[0].arg - 1 > REG_NUMBER || inst->arg[1].arg - 1 > REG_NUMBER ||
+      inst->arg[0].arg - 1 > REG_NUMBER ||
+      inst->arg[1].arg - 1 > REG_NUMBER ||
       inst->arg[2].arg - 1 > REG_NUMBER)
     return (84);
   ptr->father->reg[inst->arg[2].arg - 1] =
