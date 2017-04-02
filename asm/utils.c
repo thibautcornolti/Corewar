@@ -5,7 +5,7 @@
 ** Login   <thibaut.cornolti@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 18:24:31 2017 Thibaut Cornolti
-** Last update Fri Mar 31 11:29:15 2017 Thibaut Cornolti
+** Last update Sun Apr  2 22:32:01 2017 Thibaut Cornolti
 */
 
 #include "asm.h"
@@ -16,8 +16,11 @@ char		*skip_comm(int fd)
   char		*res;
 
   while ((res = get_next_line(fd)))
-    if (res[0] != COMMENT_CHAR && res[0])
-      return (res);
+    {
+      res = my_epure_str(res);
+      if (res[0] != COMMENT_CHAR && res[0])
+	return (res);
+    }
   return (res);
 }
 

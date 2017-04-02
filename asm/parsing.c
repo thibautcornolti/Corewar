@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Sun Apr  2 21:51:15 2017 Thibaut Cornolti
+** Last update Sun Apr  2 22:21:11 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -111,7 +111,7 @@ int		make_header(char *file[2], t_header *header)
     return (84 + my_puterror("Missing name in the header!\n"));
   header->magic = MAGIC;
   if ((give_me_the_name(file[0], header)) == 84)
-    return (84 + my_puterror("Incorrect name \in the header!\n"));
+    return (84 + my_puterror("Incorrect name in the header!\n"));
   if ((my_strncmp(file[1], COMMENT_STRING,
 		  my_strlen(COMMENT_STRING))))
     return (84 + my_puterror("Missing comment in the header!\n"));
