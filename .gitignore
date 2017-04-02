@@ -1,4 +1,5 @@
-corewar
 *.cor
 *.s
+corewar/corewar
+asm/asm
 champion/*
