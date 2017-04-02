@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 17:14:26 2017 Luc
-** Last update Sun Apr  2 12:39:05 2017 Thibaut Cornolti
+** Last update Sun Apr  2 12:50:08 2017 Thibaut Cornolti
 */
 
 #include <stdlib.h>
@@ -46,5 +46,24 @@ int	ifork(t_inst *inst, t_ptr *ptr, t_map *map)
   new->carry = 1;
   ptr->next = new;
   new->next = NULL;
+  return (0);
+}
+
+int	ldi(t_inst *inst, t_ptr *ptr, t_map *map)
+{
+  short	nb;
+
+  (void) map;
+  if (inst->inst != 0x0a || inst->arg[1].type & T_IND ||
+      !(inst->arg[2].type & T_REG) ||
+      (unsigned int)inst->arg[2].arg > REG_SIZE
+      || (inst->arg[0].type & T_REG &&
+	  (unsigned int)inst->arg[0].arg > 16))
+    return (84);
+  nb = get_arg_value(&inst->arg[0], ptr, map);
+  nb += get_arg_value(&(inst->arg[1]), ptr, map);
+  my_memncpy(&ptr->father->reg[inst->arg[2].arg - 1],
+	     &(map->arena[ptr->index_map + nb]), 4);
+  ptr->carry = (ptr->father->reg[inst->arg[2].arg - 1]) ? 0 : 1;
   return (0);
 }
