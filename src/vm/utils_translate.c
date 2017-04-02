@@ -1,11 +1,11 @@
 /*
-1;2802;0c** utils_translate.c for vm in /home/thibrex/Dropbox/delivery/CPE/CPE_2016_corewar/src/vm
+** utils_translate.c for vm in /home/rectoria/delivery/Projets/CPE_2016_corewar
 ** 
-** Made by Thibaut Cornolti
-** Login   <thibaut.cornolti@epitech.eu>
+** Made by Bastien
+** Login   <rectoria@epitech.net>
 ** 
-** Started on  Thu Mar 30 17:01:59 2017 Thibaut Cornolti
-** Last update Sat Apr  1 21:31:39 2017 Thibaut Cornolti
+** Started on  Sun Apr  2 12:00:39 2017 Bastien
+** Last update Sun Apr  2 12:00:42 2017 Bastien
 */
 
 #include "vm.h"

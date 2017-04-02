@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Thu Mar 30 16:35:29 2017 Luc
-** Last update Sat Apr  1 23:06:47 2017 Thibaut Cornolti
+** Last update Sun Apr  2 11:55:27 2017 Bastien
 */
 
 #include <unistd.h>
@@ -50,14 +50,16 @@ int	ld(t_inst *inst, t_ptr *ptr, t_map *map)
 
 int	st(t_inst *inst, t_ptr *ptr, t_map *map)
 {
-  if (inst->inst != 0x03 || !(inst->arg[0].type & T_REG) || inst->arg[1].type
+  if (inst->inst != 0x03 || !(inst->arg[0].type & T_REG) ||
+      inst->arg[1].type
       & T_DIR || (unsigned int)inst->arg[0].arg > REG_NUMBER ||
       (inst->arg[1].type & T_REG &&
        (unsigned int)inst->arg[1].arg > REG_NUMBER))
     return (84);
   if (inst->arg[1].type & T_REG)
     {
-      ptr->father->reg[inst->arg[1].arg - 1] = ptr->father->reg[inst->arg[0].arg - 1];
+      ptr->father->reg[inst->arg[1].arg - 1] =
+	ptr->father->reg[inst->arg[0].arg - 1];
       return (0);
     }
   my_memncpy (map->arena + ((ptr->index_map + inst->arg[1].arg) % MEM_SIZE),

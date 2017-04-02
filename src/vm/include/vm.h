@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:02:05 2017 Bastien
-** Last update Sat Apr  1 23:07:48 2017 Thibaut Cornolti
+** Last update Sun Apr  2 12:01:23 2017 Bastien
 */
 
 #ifndef VM_H_
@@ -77,7 +77,7 @@ typedef struct          s_cmd
   int                   load_adress;
   char                  *prog_name;
   struct s_cmd          *next;
-}			t_cmd;		
+}			t_cmd;
 
 typedef struct		s_header
 {

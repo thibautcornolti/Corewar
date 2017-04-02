@@ -5,7 +5,7 @@
 ** Login   <rectoria@epitech.net>
 ** 
 ** Started on  Thu Mar 30 10:18:25 2017 Bastien
-** Last update Sat Apr  1 11:30:18 2017 Bastien
+** Last update Sun Apr  2 11:58:21 2017 Bastien
 */
 
 #include <unistd.h>
@@ -37,7 +37,15 @@ int		add_cmap(t_map *arena, t_cmd *cmd, int fd)
   return (j);
 }
 
-t_champ		*add_champ(t_header *header, int pos, t_champ *champ, t_cmd *cmd)
+t_champ	*go_next(t_champ *temp)
+{
+  while (temp->next != NULL)
+    temp = temp->next;
+  return (temp);
+}
+
+t_champ		*add_champ(t_header *header, int pos, t_champ *champ,
+			   t_cmd *cmd)
 {
   t_champ	*new;
   t_champ	*temp;
@@ -59,8 +67,7 @@ t_champ		*add_champ(t_header *header, int pos, t_champ *champ, t_cmd *cmd)
   son->carry = 1;
   new->chained_ptr = son;
   temp = (champ) ? champ : new;
-  while (temp->next != NULL)
-    temp = temp->next;
+  temp = go_next(temp);
   champ = (temp == new) ? new : champ;
   champ->next = (temp == new) ? 0 : new;
   new->prev = (champ == new) ? 0 : temp;
@@ -78,7 +85,8 @@ t_champ		*load_champ(t_champ *champ, t_map *arena, t_cmd *cmd)
     return (NULL);
   if ((check_magic(&header.magic)) == 84)
     return (NULL);
-  if ((champ = add_champ(&header, add_cmap(arena, cmd, fd), champ, cmd)) == NULL)
+  if ((champ = add_champ(&header,
+			 add_cmap(arena, cmd, fd), champ, cmd)) == NULL)
     return (NULL);
   return (champ);
 }
