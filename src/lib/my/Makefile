@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Fri Oct 14 09:19:13 2016 Thibaut Cornolti
-## Last update Fri Mar 31 18:15:37 2017 Bastien
+## Last update Sun Apr  2 12:08:45 2017 Bastien
 ##
 
 SRC	=	my_putchar.c		\
@@ -69,7 +69,7 @@ MV	=	mv
 
 CP	=	cp
 
-CC	=	gcc -g
+CC	=	gcc
 
 AR	=	ar rc
 

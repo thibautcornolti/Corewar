@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Fri Mar 31 17:53:21 2017 Thibaut Cornolti
+## Last update Sun Apr  2 12:07:34 2017 Bastien
 ##
 
 SRC	=	parsing.c			\
@@ -26,7 +26,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	corewar
 
-CC	=	gcc -g
+CC	=	gcc
 
 HEADER	=	include/
 

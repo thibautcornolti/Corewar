@@ -5,7 +5,7 @@
 ## Login   <thibaut.cornolti@epitech.eu>
 ## 
 ## Started on  Sat Oct 15 22:12:03 2016 Thibaut Cornolti
-## Last update Thu Mar 30 10:11:07 2017 Thibaut Cornolti
+## Last update Sun Apr  2 12:07:21 2017 Bastien
 ##
 
 SRC	=	asm.c			\
@@ -25,7 +25,7 @@ OBJS	=	$(SRCS:.c=.o)
 
 NAME	=	asm
 
-CC	=	gcc -g
+CC	=	gcc
 
 HEADER	=	include/
 
