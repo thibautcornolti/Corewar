@@ -5,7 +5,7 @@
 ** Login   <romain.lancia@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 21 10:23:56 2017 Romain LANCIA
-** Last update Thu Mar 30 09:23:56 2017 Thibaut Cornolti
+** Last update Sun Apr  2 21:49:18 2017 Thibaut Cornolti
 */
 
 #include <stdio.h>
@@ -44,7 +44,8 @@ int	is_it_a_label_arg(char *arg, int *nb, t_label *babybel)
 {
   if ((get_inst(arg)) == 0)
     {
-      *nb = get_label_pos(arg + 2, babybel);
+      arg += (arg[0] == '%') ? 2 : 1;
+      *nb = get_label_pos(arg, babybel);
       return (1);
     }
   return (0);
@@ -116,7 +117,7 @@ int	verify_type_arg(char *str, int *i, t_label *babybel)
   else if (is_it_a_indirect_arg(str, &nb) == 1)
     ret = T_IND;
   else if (is_it_a_label_arg(str, &nb, babybel) == 1)
-    ret = T_DIR;
+    ret = (str[0] == '%') ? T_DIR : T_IND;
   else
     return (84);
   *i = nb;
