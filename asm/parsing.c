@@ -5,7 +5,7 @@
 ** Login   <luc.brulet@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 15:05:52 2017 Luc
-** Last update Sun Apr  2 15:05:21 2017 Bastien
+** Last update Sun Apr  2 21:51:15 2017 Thibaut Cornolti
 */
 
 #include <unistd.h>
@@ -47,7 +47,8 @@ int		give_me_comment(char *comment, t_header *header)
     return (84);
   i++;
   j = 0;
-  while (comment[i] != '"' && comment[i] != '\0' && i <= COMMENT_LENGTH)
+  while (comment[i] != '"' && comment[i] != '\0' &&
+	 i <= COMMENT_LENGTH)
     header->comment[j++] = comment[i++];
   if (!(comment[i] == '"' && !comment[i + 1]))
     return (84);
@@ -110,8 +111,9 @@ int		make_header(char *file[2], t_header *header)
     return (84 + my_puterror("Missing name in the header!\n"));
   header->magic = MAGIC;
   if ((give_me_the_name(file[0], header)) == 84)
-    return (84 + my_puterror("Incorrect name in the header!\n"));
-  if ((my_strncmp(file[1], COMMENT_STRING, my_strlen(COMMENT_STRING))))
+    return (84 + my_puterror("Incorrect name \in the header!\n"));
+  if ((my_strncmp(file[1], COMMENT_STRING,
+		  my_strlen(COMMENT_STRING))))
     return (84 + my_puterror("Missing comment in the header!\n"));
   if ((give_me_comment(file[1], header)) == 84)
     return (84 + my_puterror("Incorrect comment in the header!\n"));
